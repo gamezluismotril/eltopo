@@ -1,0 +1,57 @@
+﻿# ============================================================
+# ELTOPO - .gitignore
+# Archivos que Git debe IGNORAR (no subir al repositorio)
+# ============================================================
+
+# --- Python ---
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+build/
+dist/
+*.egg-info/
+.eggs/
+
+# --- Entornos virtuales ---
+venv/
+env/
+ENV/
+.venv/
+
+# --- Secretos - NUNCA SUBIR ---
+.env
+.env.local
+.env.*.local
+*.key
+*.secret
+secrets.json
+credentials.json
+
+# --- IDEs ---
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# --- Sistema operativo ---
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# --- ELTOPO - Datos generados ---
+cache/
+logs/
+data_store/
+*.log
+
+# --- Datos pesados ---
+*.parquet
+*.h5
+*.pkl
+
+# --- CSV de datos (mantener solo los esenciales) ---
+cache/*.csv
+!universe_filtered.csv
