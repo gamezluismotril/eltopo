@@ -7,7 +7,12 @@ let longExpanded = false;
 let shortExpanded = false;
 
 
+/* ============================================================
+   API: DESTACADOS
+   ============================================================ */
 async function fetchDestacados() {
+    showToast("Actualizando datos...", "info");
+
     try {
         const res = await fetch(`${API_URL}/destacados`);
         if (!res.ok) throw new Error(`HTTP ${res.status}`);
@@ -18,6 +23,7 @@ async function fetchDestacados() {
 
         updateUpdateInfo(data.timestamp);
         renderLists();
+        showToast("Datos actualizados", "success");
 
     } catch (err) {
         console.error("Error:", err);
@@ -25,6 +31,7 @@ async function fetchDestacados() {
             `<div class="loading">Error al cargar. Reintenta.</div>`;
         document.getElementById("shortList").innerHTML =
             `<div class="loading">Error al cargar. Reintenta.</div>`;
+        showToast("Error al cargar datos", "error");
     }
 }
 
@@ -36,6 +43,9 @@ function updateUpdateInfo(timestamp) {
 }
 
 
+/* ============================================================
+   RENDERIZADO DE LISTAS
+   ============================================================ */
 function renderLists() {
     renderList("long", allLong, longExpanded);
     renderList("short", allShort, shortExpanded);
@@ -102,6 +112,75 @@ function renderList(side, data, expanded) {
 }
 
 
+/* ============================================================
+   BUSQUEDA (ticker o nombre)
+   ============================================================ */
+async function handleSearch() {
+    const query = document.getElementById("searchInput").value.trim().toUpperCase();
+    if (!query) return;
+
+    // Si parece un ticker (2-5 letras sin espacios) → ir directo
+    if (/^[A-Z]{1,5}$/.test(query)) {
+        openTickerModal(query);
+        return;
+    }
+
+    // Si no, buscar por nombre
+    showToast(`Buscando "${query}"...`, "info");
+
+    try {
+        const res = await fetch(`${API_URL}/search/${encodeURIComponent(query)}`);
+        if (!res.ok) throw new Error(`HTTP ${res.status}`);
+        const data = await res.json();
+
+        if (data.count === 0) {
+            showToast(`No se encontraron resultados para "${query}"`, "error");
+            return;
+        }
+
+        if (data.count === 1) {
+            openTickerModal(data.results[0].symbol);
+            return;
+        }
+
+        showSearchResults(data.results);
+
+    } catch (err) {
+        console.error("Error:", err);
+        showToast("Error en la busqueda", "error");
+    }
+}
+
+function showSearchResults(results) {
+    const modal = document.getElementById("modal");
+    const body = document.getElementById("modalBody");
+
+    modal.classList.remove("hidden");
+
+    let html = `<h2 style="margin-bottom:15px;">Resultados (${results.length})</h2><div>`;
+    for (const r of results) {
+        html += `
+            <div class="ticker-card" style="margin-bottom:8px;"
+                 onclick="openTickerModal('${r.symbol}')">
+                <div class="ticker-left">
+                    <div class="ticker-symbol">${r.symbol}</div>
+                    <div style="font-size:0.75rem; color:#8b949e;">${r.name}</div>
+                </div>
+                <div class="ticker-right">
+                    <div style="font-size:0.7rem; color:#6e7681;">${r.exchange}</div>
+                </div>
+            </div>
+        `;
+    }
+    html += `</div>`;
+
+    body.innerHTML = html;
+}
+
+
+/* ============================================================
+   MODAL DE DETALLE
+   ============================================================ */
 async function openTickerModal(ticker) {
     const modal = document.getElementById("modal");
     const body = document.getElementById("modalBody");
@@ -111,11 +190,32 @@ async function openTickerModal(ticker) {
 
     try {
         const res = await fetch(`${API_URL}/ticker/${ticker}`);
-        if (!res.ok) throw new Error(`HTTP ${res.status}`);
+
+        if (!res.ok) {
+            const errData = await res.json().catch(() => ({}));
+            const detail = errData.detail || `Error ${res.status}`;
+
+            body.innerHTML = `
+                <h2>${ticker}</h2>
+                <p style="color:#f85149; margin-top:15px;">${detail}</p>
+                <p style="color:#8b949e; margin-top:20px; font-size:0.85rem;">
+                    💡 Consejo: prueba con un ticker del Top 15 LONG o SHORT que ves en la página principal.
+                </p>
+            `;
+            return;
+        }
+
         const data = await res.json();
         body.innerHTML = renderTickerDetail(data);
+
     } catch (err) {
-        body.innerHTML = `<div class="loading">Error al cargar ${ticker}</div>`;
+        body.innerHTML = `
+            <h2>${ticker}</h2>
+            <p style="color:#f85149; margin-top:15px;">No se pudo conectar con el servidor.</p>
+            <p style="color:#8b949e; margin-top:20px; font-size:0.85rem;">
+                Revisa tu conexión e inténtalo de nuevo.
+            </p>
+        `;
     }
 }
 
@@ -170,6 +270,51 @@ function closeModal() {
 }
 
 
+/* ============================================================
+   TOAST (notificaciones)
+   ============================================================ */
+function showToast(message, type = "info") {
+    let toast = document.getElementById("toast");
+    if (!toast) {
+        toast = document.createElement("div");
+        toast.id = "toast";
+        toast.style.cssText = `
+            position: fixed;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            padding: 12px 24px;
+            border-radius: 8px;
+            font-size: 0.9rem;
+            font-weight: 500;
+            z-index: 2000;
+            transition: opacity 0.3s;
+            opacity: 0;
+        `;
+        document.body.appendChild(toast);
+    }
+
+    const colors = {
+        info: "#58a6ff",
+        success: "#3fb950",
+        error: "#f85149",
+    };
+
+    toast.style.background = colors[type] || colors.info;
+    toast.style.color = "#fff";
+    toast.textContent = message;
+    toast.style.opacity = "1";
+
+    clearTimeout(toast._timeout);
+    toast._timeout = setTimeout(() => {
+        toast.style.opacity = "0";
+    }, 3000);
+}
+
+
+/* ============================================================
+   EVENTOS
+   ============================================================ */
 document.addEventListener("DOMContentLoaded", () => {
     fetchDestacados();
 
@@ -185,13 +330,10 @@ document.addEventListener("DOMContentLoaded", () => {
         renderLists();
     });
 
-    document.getElementById("searchButton").addEventListener("click", () => {
-        const q = document.getElementById("searchInput").value.trim().toUpperCase();
-        if (q) openTickerModal(q);
-    });
+    document.getElementById("searchButton").addEventListener("click", handleSearch);
 
     document.getElementById("searchInput").addEventListener("keypress", (e) => {
-        if (e.key === "Enter") document.getElementById("searchButton").click();
+        if (e.key === "Enter") handleSearch();
     });
 
     document.getElementById("modalClose").addEventListener("click", closeModal);

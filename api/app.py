@@ -30,6 +30,8 @@ app.add_middleware(
 BASE_DIR = Path(__file__).resolve().parent.parent
 DESTACADOS_JSON = BASE_DIR / "public_data" / "destacados.json"
 CACHE_DESTACADOS_JSON = CACHE_DIR / "destacados.json"
+UNIVERSE_CSV = CACHE_DIR / "universe_filtered.csv"
+PUBLIC_UNIVERSE_CSV = BASE_DIR / "public_data" / "universe.csv"
 
 
 def _load_destacados():
@@ -42,6 +44,32 @@ def _load_destacados():
         )
     with open(json_path, encoding="utf-8") as f:
         return json.load(f)
+
+
+def _load_universe():
+    """Carga el universo filtrado (ticker -> nombre)."""
+    csv_path = PUBLIC_UNIVERSE_CSV if PUBLIC_UNIVERSE_CSV.exists() else UNIVERSE_CSV
+    if not csv_path.exists():
+        return []
+    try:
+        import csv
+        with open(csv_path, encoding="utf-8") as f:
+            reader = csv.DictReader(f)
+            return [row for row in reader]
+    except Exception:
+        return []
+
+
+def _find_in_destacados(symbol: str):
+    """Busca el ticker en destacados. Devuelve el item o None."""
+    try:
+        data = _load_destacados()
+        for item in data.get("long", []) + data.get("short", []):
+            if item.get("ticker") == symbol:
+                return item
+    except Exception:
+        pass
+    return None
 
 
 # ============================================================
@@ -58,6 +86,7 @@ def root():
             "/destacados/long",
             "/destacados/short",
             "/ticker/{symbol}",
+            "/search/{query}",
             "/health",
         ],
     }
@@ -100,22 +129,63 @@ def get_destacados_short():
 
 @app.get("/ticker/{symbol}")
 def get_ticker(symbol: str):
-    """Analisis completo de un ticker concreto.
-    Primero busca en destacados.json (rapido), luego analisis en vivo."""
+    """Analisis completo de un ticker.
+    1. Busca en destacados.json (rapido)
+    2. Si no esta, intenta analisis en vivo
+    """
     symbol = symbol.upper()
 
-    # 1. Buscar en el JSON de destacados (rapido)
-    try:
-        data = _load_destacados()
-        for item in data.get("long", []) + data.get("short", []):
-            if item.get("ticker") == symbol:
-                return item
-    except Exception:
-        pass
+    # 1. Buscar en destacados
+    item = _find_in_destacados(symbol)
+    if item:
+        return item
 
-    # 2. Si no esta en destacados, hacer analisis en vivo (lento)
+    # 2. Intento de analisis en vivo (puede tardar o fallar)
     try:
         from analysis.technicals import analyze_ticker
-        return analyze_ticker(symbol)
-    except Exception as e:
-        raise HTTPException(status_code=500, detail=str(e))
+        result = analyze_ticker(symbol)
+        if "error" in result:
+            raise HTTPException(
+                status_code=404,
+                detail=f"'{symbol}' no tiene datos suficientes. Prueba con otro ticker del Top 15.",
+            )
+        return result
+    except HTTPException:
+        raise
+    except Exception:
+        raise HTTPException(
+            status_code=404,
+            detail=f"'{symbol}' no se pudo analizar. Prueba con otro ticker del Top 15.",
+        )
+
+
+@app.get("/search/{query}")
+def search(query: str):
+    """Busca tickers por nombre o symbol.
+    Devuelve lista de coincidencias.
+    """
+    query = query.upper().strip()
+    if len(query) < 2:
+        return {"query": query, "results": []}
+
+    universe = _load_universe()
+    results = []
+
+    for row in universe:
+        symbol = (row.get("symbol") or "").upper()
+        name = (row.get("name") or "").upper()
+
+        if query in symbol or query in name:
+            results.append({
+                "symbol": symbol,
+                "name": row.get("name") or "",
+                "exchange": row.get("exchange") or "",
+            })
+            if len(results) >= 20:
+                break
+
+    return {
+        "query": query,
+        "count": len(results),
+        "results": results,
+    }

@@ -8,6 +8,7 @@
 </head>
 <body>
 
+    <!-- HEADER -->
     <header class="header">
         <div class="header-content">
             <h1>📈 ELTOPO</h1>
@@ -15,20 +16,23 @@
         </div>
     </header>
 
+    <!-- BUSCADOR -->
     <section class="search-section">
         <div class="search-container">
             <input 
                 type="text" 
                 id="searchInput" 
-                placeholder="🔍 Buscar acción (ej: NVDA)..." 
+                placeholder="🔍 Buscar ticker o nombre (ej: NVDA, Microsoft)..." 
                 autocomplete="off">
             <button id="searchButton">Buscar</button>
         </div>
-        <button id="scanButton" class="btn-scan">🎯 Buscar oportunidades</button>
+        <button id="scanButton" class="btn-scan">🔄 Actualizar datos</button>
     </section>
 
+    <!-- ÚLTIMA ACTUALIZACIÓN -->
     <div class="update-info" id="updateInfo"></div>
 
+    <!-- TOP LONG + SHORT -->
     <section class="destacados-section">
         <div class="column long-column">
             <h2 class="column-title">
@@ -53,11 +57,13 @@
         </div>
     </section>
 
+    <!-- FOOTER -->
     <footer class="footer">
         <p>⚠️ Esta aplicación ofrece análisis de datos, no asesoramiento financiero.</p>
         <p class="small">Datos: <a href="https://alpaca.markets" target="_blank">Alpaca</a> · Motor: ELTOPO v1.0</p>
     </footer>
 
+    <!-- MODAL DETALLE -->
     <div id="modal" class="modal hidden">
         <div class="modal-content">
             <button class="modal-close" id="modalClose">×</button>
