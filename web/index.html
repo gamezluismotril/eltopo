@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ELTOPO - Análisis de mercado</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+    <header class="header">
+        <div class="header-content">
+            <h1>📈 ELTOPO</h1>
+            <p class="subtitle">Análisis de datos para day trading</p>
+        </div>
+    </header>
+
+    <section class="search-section">
+        <div class="search-container">
+            <input 
+                type="text" 
+                id="searchInput" 
+                placeholder="🔍 Buscar acción (ej: NVDA)..." 
+                autocomplete="off">
+            <button id="searchButton">Buscar</button>
+        </div>
+        <button id="scanButton" class="btn-scan">🎯 Buscar oportunidades</button>
+    </section>
+
+    <div class="update-info" id="updateInfo"></div>
+
+    <section class="destacados-section">
+        <div class="column long-column">
+            <h2 class="column-title">
+                <span class="dot green"></span> LONG
+                <span class="count" id="longCount">0</span>
+            </h2>
+            <div id="longList" class="ticker-list">
+                <div class="loading">Cargando...</div>
+            </div>
+            <button class="btn-more" id="longMoreBtn" data-side="long">Ver más</button>
+        </div>
+
+        <div class="column short-column">
+            <h2 class="column-title">
+                <span class="dot red"></span> SHORT
+                <span class="count" id="shortCount">0</span>
+            </h2>
+            <div id="shortList" class="ticker-list">
+                <div class="loading">Cargando...</div>
+            </div>
+            <button class="btn-more" id="shortMoreBtn" data-side="short">Ver más</button>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <p>⚠️ Esta aplicación ofrece análisis de datos, no asesoramiento financiero.</p>
+        <p class="small">Datos: <a href="https://alpaca.markets" target="_blank">Alpaca</a> · Motor: ELTOPO v1.0</p>
+    </footer>
+
+    <div id="modal" class="modal hidden">
+        <div class="modal-content">
+            <button class="modal-close" id="modalClose">×</button>
+            <div id="modalBody"></div>
+        </div>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>

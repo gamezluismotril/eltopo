@@ -100,11 +100,22 @@ def get_destacados_short():
 
 @app.get("/ticker/{symbol}")
 def get_ticker(symbol: str):
-    """Analisis completo de un ticker concreto."""
-    from analysis.technicals import analyze_ticker
-
+    """Analisis completo de un ticker concreto.
+    Primero busca en destacados.json (rapido), luego analisis en vivo."""
     symbol = symbol.upper()
+
+    # 1. Buscar en el JSON de destacados (rapido)
     try:
+        data = _load_destacados()
+        for item in data.get("long", []) + data.get("short", []):
+            if item.get("ticker") == symbol:
+                return item
+    except Exception:
+        pass
+
+    # 2. Si no esta en destacados, hacer analisis en vivo (lento)
+    try:
+        from analysis.technicals import analyze_ticker
         return analyze_ticker(symbol)
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
