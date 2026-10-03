@@ -23,9 +23,30 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
-DESTACADOS_JSON = CACHE_DIR / "destacados.json"
+
+# ============================================================
+# RUTAS DE DATOS
+# ============================================================
+BASE_DIR = Path(__file__).resolve().parent.parent
+DESTACADOS_JSON = BASE_DIR / "public_data" / "destacados.json"
+CACHE_DESTACADOS_JSON = CACHE_DIR / "destacados.json"
 
 
+def _load_destacados():
+    """Carga el JSON desde public_data (produccion) o cache (local)."""
+    json_path = DESTACADOS_JSON if DESTACADOS_JSON.exists() else CACHE_DESTACADOS_JSON
+    if not json_path.exists():
+        raise HTTPException(
+            status_code=404,
+            detail="Sin datos. Ejecuta el scanner.",
+        )
+    with open(json_path, encoding="utf-8") as f:
+        return json.load(f)
+
+
+# ============================================================
+# ENDPOINTS
+# ============================================================
 @app.get("/")
 def root():
     return {
@@ -49,19 +70,14 @@ def health():
 
 @app.get("/destacados")
 def get_destacados():
-    if not DESTACADOS_JSON.exists():
-        raise HTTPException(status_code=404, detail="Sin datos. Ejecuta el scanner.")
-    with open(DESTACADOS_JSON, encoding="utf-8") as f:
-        data = json.load(f)
-    return data
+    """Devuelve el Top 15 LONG + Top 15 SHORT."""
+    return _load_destacados()
 
 
 @app.get("/destacados/long")
 def get_destacados_long():
-    if not DESTACADOS_JSON.exists():
-        raise HTTPException(status_code=404, detail="Sin datos")
-    with open(DESTACADOS_JSON, encoding="utf-8") as f:
-        data = json.load(f)
+    """Solo el Top LONG."""
+    data = _load_destacados()
     return {
         "timestamp": data.get("timestamp"),
         "count": len(data.get("long", [])),
@@ -72,10 +88,8 @@ def get_destacados_long():
 
 @app.get("/destacados/short")
 def get_destacados_short():
-    if not DESTACADOS_JSON.exists():
-        raise HTTPException(status_code=404, detail="Sin datos")
-    with open(DESTACADOS_JSON, encoding="utf-8") as f:
-        data = json.load(f)
+    """Solo el Top SHORT."""
+    data = _load_destacados()
     return {
         "timestamp": data.get("timestamp"),
         "count": len(data.get("short", [])),
@@ -86,7 +100,9 @@ def get_destacados_short():
 
 @app.get("/ticker/{symbol}")
 def get_ticker(symbol: str):
+    """Analisis completo de un ticker concreto."""
     from analysis.technicals import analyze_ticker
+
     symbol = symbol.upper()
     try:
         return analyze_ticker(symbol)
