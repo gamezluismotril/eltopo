@@ -4,6 +4,7 @@ Analiza los tickers del universo filtrado y genera
 el ranking de "Valores destacados" separado en LONG y SHORT.
 
 Bloque C: añade indices + top_by_sector
+Soporta fallback a public_data/universe.csv para GitHub Actions.
 """
 import json
 import time
@@ -24,6 +25,7 @@ log = get_logger(__name__)
 
 
 UNIVERSE_CSV = CACHE_DIR / "universe_filtered.csv"
+UNIVERSE_CSV_FALLBACK = Path(__file__).resolve().parent.parent / "public_data" / "universe.csv"
 RESULTS_CSV = CACHE_DIR / "scan_results.csv"
 TOP_JSON = CACHE_DIR / "destacados.json"
 
@@ -66,10 +68,13 @@ TOP_PER_SECTOR = 3
 # UNIVERSO
 # ============================================================
 def load_universe_symbols() -> list[str]:
-    if not UNIVERSE_CSV.exists():
-        log.error(f"No existe {UNIVERSE_CSV}")
+    # Buscar primero el cache local, luego el fallback en public_data
+    csv_path = UNIVERSE_CSV if UNIVERSE_CSV.exists() else UNIVERSE_CSV_FALLBACK
+    if not csv_path.exists():
+        log.error(f"No existe {UNIVERSE_CSV} ni {UNIVERSE_CSV_FALLBACK}")
         return []
-    df = pd.read_csv(UNIVERSE_CSV)
+    log.info(f"Leyendo universo desde: {csv_path.name}")
+    df = pd.read_csv(csv_path)
     symbols = df["symbol"].dropna().astype(str).tolist()
     log.info(f"Universo: {len(symbols)} tickers")
     return symbols
@@ -77,10 +82,11 @@ def load_universe_symbols() -> list[str]:
 
 def load_symbol_to_sector() -> dict:
     """Carga {symbol: sector} desde el universo."""
-    if not UNIVERSE_CSV.exists():
+    csv_path = UNIVERSE_CSV if UNIVERSE_CSV.exists() else UNIVERSE_CSV_FALLBACK
+    if not csv_path.exists():
         return {}
     try:
-        df = pd.read_csv(UNIVERSE_CSV)
+        df = pd.read_csv(csv_path)
         if "sector" not in df.columns:
             return {}
         mapping = {}
