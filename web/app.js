@@ -189,7 +189,7 @@ function updateUpdateInfo(timestamp) {
         `Última actualización: ${date.toLocaleString("es-ES")}`;
 }
 
-// TOP 5 PUNTUACIÓN MÁXIMA
+// TOP 4 PUNTUACIÓN MÁXIMA
 function renderTopScore() {
     const container = document.getElementById("topScoreRow");
     if (!container) return;
@@ -199,14 +199,14 @@ function renderTopScore() {
         ...allShort.map(t => ({...t, _side: "short"})),
     ];
     all.sort((a, b) => (b.score || 0) - (a.score || 0));
-    const top5 = all.slice(0, 5);
+    const top4 = all.slice(0, 4);
 
-    if (top5.length === 0) {
+    if (top4.length === 0) {
         container.innerHTML = `<div class="loading">Sin datos</div>`;
         return;
     }
 
-    container.innerHTML = top5.map(item => {
+    container.innerHTML = top4.map(item => {
         const score = item.score || 0;
         const sClass = scoreClass(score);
         const side = item._side;
