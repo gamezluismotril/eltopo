@@ -2,6 +2,8 @@
 Scanner multitemporal para ELTOPO usando Alpaca.
 Analiza los tickers del universo filtrado y genera
 el ranking de "Valores destacados" separado en LONG y SHORT.
+
+Bloque C: añade indices + top_by_sector
 """
 import json
 import time
@@ -27,6 +29,40 @@ TOP_JSON = CACHE_DIR / "destacados.json"
 
 
 # ============================================================
+# CONFIGURACIÓN DE ÍNDICES Y SECTORES
+# ============================================================
+INDICES_A_SEGUIR = [
+    {"symbol": "SPY", "name": "S&P 500"},
+    {"symbol": "QQQ", "name": "NASDAQ 100"},
+    {"symbol": "DIA", "name": "Dow Jones"},
+    {"symbol": "IWM", "name": "Russell 2000"},
+    {"symbol": "XLF", "name": "Financiero"},
+    {"symbol": "XLE", "name": "Energía"},
+    {"symbol": "XLK", "name": "Tecnología"},
+    {"symbol": "SMH", "name": "Semiconductores"},
+    {"symbol": "GLD", "name": "Oro"},
+    {"symbol": "TLT", "name": "Bonos 20+"},
+]
+
+SECTORES_ES = {
+    "Technology": "Tecnología",
+    "Financial Services": "Financiero",
+    "Healthcare": "Salud",
+    "Consumer Cyclical": "Consumo Discrecional",
+    "Consumer Defensive": "Consumo Básico",
+    "Industrials": "Industrial",
+    "Energy": "Energía",
+    "Basic Materials": "Materiales",
+    "Utilities": "Utilities",
+    "Real Estate": "Bienes Raíces",
+    "Communication Services": "Comunicaciones",
+    "Otros": "Otros",
+}
+
+TOP_PER_SECTOR = 3
+
+
+# ============================================================
 # UNIVERSO
 # ============================================================
 def load_universe_symbols() -> list[str]:
@@ -37,6 +73,25 @@ def load_universe_symbols() -> list[str]:
     symbols = df["symbol"].dropna().astype(str).tolist()
     log.info(f"Universo: {len(symbols)} tickers")
     return symbols
+
+
+def load_symbol_to_sector() -> dict:
+    """Carga {symbol: sector} desde el universo."""
+    if not UNIVERSE_CSV.exists():
+        return {}
+    try:
+        df = pd.read_csv(UNIVERSE_CSV)
+        if "sector" not in df.columns:
+            return {}
+        mapping = {}
+        for _, row in df.iterrows():
+            sym = str(row["symbol"]).upper().strip()
+            sec = str(row["sector"]).strip() if pd.notna(row["sector"]) else "Otros"
+            mapping[sym] = sec
+        return mapping
+    except Exception as e:
+        log.warning(f"No se pudo cargar sectores: {e}")
+        return {}
 
 
 # ============================================================
@@ -166,7 +221,7 @@ def filter_and_rank(results: list[dict], min_score: int = MIN_SCORE_FOR_TOP) -> 
 # BLOQUE B: ENRIQUECIMIENTO DEL TOP
 # ============================================================
 def _build_reasons(raw: dict) -> list[dict]:
-    """Construye la lista de motivos del score a partir del JSON de analyze_ticker."""
+    """Construye la lista de motivos del score."""
     reasons = []
     tf_daily = raw.get("timeframes", {}).get("daily", {})
     modules = tf_daily.get("modules", {})
@@ -177,175 +232,98 @@ def _build_reasons(raw: dict) -> list[dict]:
     # Tendencia
     trend = modules.get("trend", {}).get("score", 0)
     if trend >= 80:
-        reasons.append({
-            "icon": "✅",
-            "label": "Tendencia fuerte",
-            "detail": "EMAs alineadas y ADX alto",
-            "points": 25,
-        })
+        reasons.append({"icon": "✅", "label": "Tendencia fuerte",
+                       "detail": "EMAs alineadas y ADX alto", "points": 25})
     elif trend >= 60:
-        reasons.append({
-            "icon": "✅",
-            "label": "Tendencia moderada",
-            "detail": "EMAs alineadas",
-            "points": 15,
-        })
+        reasons.append({"icon": "✅", "label": "Tendencia moderada",
+                       "detail": "EMAs alineadas", "points": 15})
     elif trend < 40:
-        reasons.append({
-            "icon": "⚠️",
-            "label": "Sin tendencia clara",
-            "detail": "EMAs mezcladas",
-            "points": -5,
-        })
+        reasons.append({"icon": "⚠️", "label": "Sin tendencia clara",
+                       "detail": "EMAs mezcladas", "points": -5})
 
-    # Alineación multitemporal
+    # Alineación
     if alignment == "aligned_bullish":
-        reasons.append({
-            "icon": "✅",
-            "label": "3 temporalidades alineadas",
-            "detail": "Diario, 1h y 5m apuntan arriba",
-            "points": 15,
-        })
+        reasons.append({"icon": "✅", "label": "3 temporalidades alineadas",
+                       "detail": "Diario, 1h y 5m apuntan arriba", "points": 15})
     elif alignment == "aligned_bearish":
-        reasons.append({
-            "icon": "✅",
-            "label": "3 temporalidades alineadas",
-            "detail": "Diario, 1h y 5m apuntan abajo",
-            "points": 15,
-        })
+        reasons.append({"icon": "✅", "label": "3 temporalidades alineadas",
+                       "detail": "Diario, 1h y 5m apuntan abajo", "points": 15})
     elif alignment and "opposed" in alignment:
-        reasons.append({
-            "icon": "❌",
-            "label": "Conflicto entre temporalidades",
-            "detail": "Señales contradictorias",
-            "points": -25,
-        })
+        reasons.append({"icon": "❌", "label": "Conflicto entre temporalidades",
+                       "detail": "Señales contradictorias", "points": -25})
     elif alignment == "mixed":
-        reasons.append({
-            "icon": "⚠️",
-            "label": "Señal mixta",
-            "detail": "Temporalidades no del todo alineadas",
-            "points": -10,
-        })
+        reasons.append({"icon": "⚠️", "label": "Señal mixta",
+                       "detail": "Temporalidades no alineadas", "points": -10})
 
-    # Soporte / resistencia
+    # Soporte/resistencia
     sr = modules.get("sr", {}).get("score", 0)
     if sr >= 80:
-        reasons.append({
-            "icon": "✅",
-            "label": "Niveles clave favorables",
-            "detail": "Cerca de soporte o resistencia fuerte",
-            "points": 12,
-        })
+        reasons.append({"icon": "✅", "label": "Niveles clave favorables",
+                       "detail": "Cerca de soporte o resistencia fuerte", "points": 12})
     elif sr >= 60:
-        reasons.append({
-            "icon": "✅",
-            "label": "Niveles S/R correctos",
-            "detail": "Zona operativa razonable",
-            "points": 6,
-        })
+        reasons.append({"icon": "✅", "label": "Niveles S/R correctos",
+                       "detail": "Zona operativa razonable", "points": 6})
 
     # Momentum
     momentum = modules.get("momentum", {}).get("score", 0)
     rsi = indicators.get("rsi")
     if momentum >= 70 and rsi is not None and 40 <= rsi <= 70:
-        reasons.append({
-            "icon": "✅",
-            "label": "Momentum saludable",
-            "detail": f"RSI {rsi:.1f} en zona neutral-alcista",
-            "points": 10,
-        })
+        reasons.append({"icon": "✅", "label": "Momentum saludable",
+                       "detail": f"RSI {rsi:.1f} en zona neutral", "points": 10})
     elif rsi is not None and rsi > 75:
-        reasons.append({
-            "icon": "⚠️",
-            "label": "Sobrecompra",
-            "detail": f"RSI {rsi:.1f} (>75)",
-            "points": -5,
-        })
+        reasons.append({"icon": "⚠️", "label": "Sobrecompra",
+                       "detail": f"RSI {rsi:.1f} (>75)", "points": -5})
     elif rsi is not None and rsi < 25:
-        reasons.append({
-            "icon": "⚠️",
-            "label": "Sobreventa",
-            "detail": f"RSI {rsi:.1f} (<25)",
-            "points": -5,
-        })
+        reasons.append({"icon": "⚠️", "label": "Sobreventa",
+                       "detail": f"RSI {rsi:.1f} (<25)", "points": -5})
 
     # Volumen
     vol = modules.get("volume", {}).get("score", 0)
     rel_vol = indicators.get("rel_vol")
     if vol >= 80 and rel_vol is not None:
-        reasons.append({
-            "icon": "✅",
-            "label": "Volumen confirma",
-            "detail": f"{rel_vol:.1f}× el volumen medio",
-            "points": 8,
-        })
+        reasons.append({"icon": "✅", "label": "Volumen confirma",
+                       "detail": f"{rel_vol:.1f}× el volumen medio", "points": 8})
 
     # Patrones
     patterns = tf_daily.get("patterns", [])
     high_pat = [p for p in patterns if p.get("level_score", 0) >= 70]
     if high_pat:
         p = high_pat[0]
-        reasons.append({
-            "icon": "✅",
-            "label": f"Patrón: {p.get('name', '').replace('_', ' ')}",
-            "detail": f"En nivel {p.get('level', 0):.2f}",
-            "points": 7,
-        })
+        reasons.append({"icon": "✅",
+                       "label": f"Patrón: {p.get('name', '').replace('_', ' ')}",
+                       "detail": f"En nivel {p.get('level', 0):.2f}", "points": 7})
 
     # Velas
     candles = tf_daily.get("candles", [])
     if candles:
         c = candles[0]
-        reasons.append({
-            "icon": "✅",
-            "label": f"Vela: {c.get('name', '').replace('_', ' ')}",
-            "detail": f"{c.get('direction', '')} en {c.get('zone', 'N/A')}",
-            "points": 5,
-        })
+        reasons.append({"icon": "✅",
+                       "label": f"Vela: {c.get('name', '').replace('_', ' ')}",
+                       "detail": f"{c.get('direction', '')} en {c.get('zone', 'N/A')}",
+                       "points": 5})
 
     # Régimen
     regime = raw.get("regime_daily", "")
     if regime == "trending":
-        reasons.append({
-            "icon": "✅",
-            "label": "Régimen en tendencia",
-            "detail": "El mercado favorece la dirección",
-            "points": 3,
-        })
+        reasons.append({"icon": "✅", "label": "Régimen en tendencia",
+                       "detail": "El mercado favorece la dirección", "points": 3})
     elif regime == "ranging":
-        reasons.append({
-            "icon": "⚠️",
-            "label": "Régimen en rango",
-            "detail": "Menos continuidad esperada",
-            "points": -15,
-        })
+        reasons.append({"icon": "⚠️", "label": "Régimen en rango",
+                       "detail": "Menos continuidad esperada", "points": -15})
 
     # Confluencia
     if confluence == "high":
-        reasons.append({
-            "icon": "✅",
-            "label": "Confluencia alta",
-            "detail": "Varios módulos confirman",
-            "points": 5,
-        })
+        reasons.append({"icon": "✅", "label": "Confluencia alta",
+                       "detail": "Varios módulos confirman", "points": 5})
     elif confluence == "very_low":
-        reasons.append({
-            "icon": "⚠️",
-            "label": "Confluencia muy baja",
-            "detail": "Pocos módulos confirman",
-            "points": -5,
-        })
+        reasons.append({"icon": "⚠️", "label": "Confluencia muy baja",
+                       "detail": "Pocos módulos confirman", "points": -5})
 
-    # RSI penalty explícito
+    # RSI penalty
     rsi_pen = tf_daily.get("rsi_penalty", 0)
     if rsi_pen < 0:
-        reasons.append({
-            "icon": "⚠️",
-            "label": "RSI extremo",
-            "detail": "Penalización aplicada",
-            "points": rsi_pen,
-        })
+        reasons.append({"icon": "⚠️", "label": "RSI extremo",
+                       "detail": "Penalización aplicada", "points": rsi_pen})
 
     return reasons
 
@@ -396,6 +374,87 @@ def enrich_top_ticker(raw: dict) -> dict:
 
 
 # ============================================================
+# BLOQUE C: ÍNDICES
+# ============================================================
+def build_indices() -> list[dict]:
+    """Descarga datos de los índices clave."""
+    log.info("Descargando índices...")
+    indices_data = []
+
+    for idx_cfg in INDICES_A_SEGUIR:
+        symbol = idx_cfg["symbol"]
+        name = idx_cfg["name"]
+
+        try:
+            df = download_ohlcv(symbol, "daily")
+            if df is None or len(df) < 5:
+                log.warning(f"[{symbol}] sin datos suficientes")
+                continue
+
+            closes = df["Close"].tail(20).tolist()
+            last_close = float(closes[-1])
+            prev_close = float(closes[-2]) if len(closes) >= 2 else last_close
+            change_pct = ((last_close - prev_close) / prev_close) * 100 if prev_close else 0
+
+            indices_data.append({
+                "symbol": symbol,
+                "name": name,
+                "price": round(last_close, 2),
+                "change_pct": round(change_pct, 2),
+                "sparkline": [round(float(x), 2) for x in closes],
+            })
+
+            log.info(f"  {symbol} ({name}): {last_close:.2f} ({change_pct:+.2f}%)")
+
+        except Exception as e:
+            log.warning(f"[{symbol}] error: {e}")
+
+    return indices_data
+
+
+# ============================================================
+# BLOQUE C: TOP POR SECTOR
+# ============================================================
+def build_top_by_sector(df: pd.DataFrame) -> dict:
+    """Construye Top 3 por sector para LONG y SHORT."""
+    log.info("Construyendo top por sector...")
+
+    symbol_sector = load_symbol_to_sector()
+    if not symbol_sector:
+        log.warning("Sin mapa de sectores. Saltando top_by_sector.")
+        return {"long": {}, "short": {}}
+
+    if df.empty:
+        return {"long": {}, "short": {}}
+
+    df = df.copy()
+    df["sector"] = df["ticker"].map(symbol_sector).fillna("Otros")
+
+    def _group_side(side: str) -> dict:
+        sub = df[df["side"] == side].sort_values("score", ascending=False)
+        out = {}
+        for sector_raw in sub["sector"].unique():
+            top_n = sub[sub["sector"] == sector_raw].head(TOP_PER_SECTOR)
+            sector_es = SECTORES_ES.get(sector_raw, sector_raw)
+            out[sector_es] = [
+                {"ticker": row["ticker"], "score": int(row["score"])}
+                for _, row in top_n.iterrows()
+            ]
+        return out
+
+    result = {
+        "long": _group_side("long"),
+        "short": _group_side("short"),
+    }
+
+    n_long_sectors = len(result["long"])
+    n_short_sectors = len(result["short"])
+    log.info(f"  Sectores LONG: {n_long_sectors} | Sectores SHORT: {n_short_sectors}")
+
+    return result
+
+
+# ============================================================
 # GUARDADO
 # ============================================================
 def save_results(df: pd.DataFrame, results_raw: list[dict]):
@@ -414,10 +473,16 @@ def save_results(df: pd.DataFrame, results_raw: list[dict]):
     top_long.sort(key=lambda r: r.get("score", 0), reverse=True)
     top_short.sort(key=lambda r: r.get("score", 0), reverse=True)
 
-    # === BLOQUE B: enriquecer los 30 tickers del top ===
+    # BLOQUE B: enriquecer los 30 tickers del top
     log.info("Enriqueciendo top con sparkline, chart_5d y reasons...")
     top_long = [enrich_top_ticker(r) for r in top_long]
     top_short = [enrich_top_ticker(r) for r in top_short]
+
+    # BLOQUE C: índices
+    indices = build_indices()
+
+    # BLOQUE C: top por sector
+    top_by_sector = build_top_by_sector(df)
 
     payload = {
         "timestamp": datetime.now(timezone.utc).isoformat(),
@@ -433,6 +498,8 @@ def save_results(df: pd.DataFrame, results_raw: list[dict]):
         },
         "long": top_long,
         "short": top_short,
+        "indices": indices,
+        "top_by_sector": top_by_sector,
         "disclaimer": "Esta aplicacion ofrece analisis de datos, no asesoramiento financiero.",
     }
 
@@ -441,6 +508,8 @@ def save_results(df: pd.DataFrame, results_raw: list[dict]):
 
     log.success(f"Top {TOP_N} LONG + Top {TOP_N} SHORT guardados: {TOP_JSON}")
     log.info(f"  LONG: {len(top_long)} | SHORT: {len(top_short)}")
+    log.info(f"  Índices: {len(indices)}")
+    log.info(f"  Sectores LONG: {len(top_by_sector.get('long', {}))}")
 
 
 # ============================================================
