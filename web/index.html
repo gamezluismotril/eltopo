@@ -8,66 +8,126 @@
 </head>
 <body>
 
-    <!-- HEADER -->
+    <!-- ============================================================
+         HEADER
+         ============================================================ -->
     <header class="header">
         <div class="header-content">
-            <h1>📈 ELTOPO</h1>
-            <p class="subtitle">Análisis de datos para day trading</p>
+            <div class="header-logo">
+                <span class="icon">📈</span>
+                <h1>ELTOPO</h1>
+            </div>
+
+            <div class="header-search">
+                <input
+                    type="text"
+                    id="searchInput"
+                    placeholder="🔍 Buscar ticker o nombre (ej: NVDA, Microsoft)..."
+                    autocomplete="off">
+                <button id="searchButton">Buscar</button>
+            </div>
+
+            <button class="theme-toggle" id="themeToggle" title="Cambiar tema">
+                🌙
+            </button>
         </div>
     </header>
 
-    <!-- BUSCADOR -->
-    <section class="search-section">
-        <div class="search-container">
-            <input 
-                type="text" 
-                id="searchInput" 
-                placeholder="🔍 Buscar ticker o nombre (ej: NVDA, Microsoft)..." 
-                autocomplete="off">
-            <button id="searchButton">Buscar</button>
+    <!-- ============================================================
+         MINI-WIDGET ÍNDICES (siempre visible)
+         ============================================================ -->
+    <div class="mini-indices" id="miniIndices">
+        <div class="mini-indices-inner" id="miniIndicesInner">
+            <!-- Se rellena con JS -->
         </div>
-        <button id="scanButton" class="btn-scan">🔄 Actualizar datos</button>
-    </section>
+    </div>
 
-    <!-- ÚLTIMA ACTUALIZACIÓN -->
-    <div class="update-info" id="updateInfo"></div>
+    <!-- ============================================================
+         TABS
+         ============================================================ -->
+    <nav class="tabs">
+        <button class="tab active" data-tab="top15">🎯 Top 15</button>
+        <button class="tab" data-tab="sectors">🏆 Por Sector</button>
+        <button class="tab" data-tab="indices">📊 Índices</button>
+    </nav>
 
-    <!-- TOP LONG + SHORT -->
-    <section class="destacados-section">
-        <div class="column long-column">
-            <h2 class="column-title">
-                <span class="dot green"></span> LONG
-                <span class="count" id="longCount">0</span>
-            </h2>
-            <div id="longList" class="ticker-list">
-                <div class="loading">Cargando...</div>
+    <!-- ============================================================
+         CONTENIDO
+         ============================================================ -->
+    <main class="container">
+
+        <div class="update-info" id="updateInfo"></div>
+
+        <!-- ========================================================
+             TAB 1: TOP 15
+             ======================================================== -->
+        <div class="tab-content active" id="tab-top15">
+            <section class="destacados-section">
+
+                <div class="column long-column">
+                    <h2 class="column-title">
+                        <span class="dot green"></span> LONG
+                        <span class="count" id="longCount">0</span>
+                    </h2>
+                    <div id="longList" class="ticker-list">
+                        <div class="loading">Cargando...</div>
+                    </div>
+                    <button class="btn-more" id="longMoreBtn">Ver más</button>
+                </div>
+
+                <div class="column short-column">
+                    <h2 class="column-title">
+                        <span class="dot red"></span> SHORT
+                        <span class="count" id="shortCount">0</span>
+                    </h2>
+                    <div id="shortList" class="ticker-list">
+                        <div class="loading">Cargando...</div>
+                    </div>
+                    <button class="btn-more" id="shortMoreBtn">Ver más</button>
+                </div>
+
+            </section>
+        </div>
+
+        <!-- ========================================================
+             TAB 2: TOP POR SECTOR
+             ======================================================== -->
+        <div class="tab-content" id="tab-sectors">
+            <div id="sectorsContainer">
+                <div class="loading">Cargando sectores...</div>
             </div>
-            <button class="btn-more" id="longMoreBtn" data-side="long">Ver más</button>
         </div>
 
-        <div class="column short-column">
-            <h2 class="column-title">
-                <span class="dot red"></span> SHORT
-                <span class="count" id="shortCount">0</span>
-            </h2>
-            <div id="shortList" class="ticker-list">
-                <div class="loading">Cargando...</div>
+        <!-- ========================================================
+             TAB 3: ÍNDICES
+             ======================================================== -->
+        <div class="tab-content" id="tab-indices">
+            <div class="indices-title">Mercado americano · últimos 20 días</div>
+            <div class="indices-row" id="indicesRow">
+                <div class="loading">Cargando índices...</div>
             </div>
-            <button class="btn-more" id="shortMoreBtn" data-side="short">Ver más</button>
         </div>
-    </section>
 
-    <!-- FOOTER -->
+    </main>
+
+    <!-- ============================================================
+         FOOTER
+         ============================================================ -->
     <footer class="footer">
         <p>⚠️ Esta aplicación ofrece análisis de datos, no asesoramiento financiero.</p>
-        <p class="small">Datos: <a href="https://alpaca.markets" target="_blank">Alpaca</a> · Motor: ELTOPO v1.0</p>
+        <p class="small">
+            Datos: <a href="https://alpaca.markets" target="_blank">Alpaca</a> ·
+            Motor: ELTOPO v1.0
+        </p>
     </footer>
 
-    <!-- MODAL DETALLE -->
+    <!-- ============================================================
+         MODAL
+         ============================================================ -->
     <div id="modal" class="modal hidden">
         <div class="modal-content">
             <button class="modal-close" id="modalClose">×</button>
-            <div id="modalBody"></div>
+            <div class="modal-body" id="modalBody"></div>
         </div>
     </div>
 
