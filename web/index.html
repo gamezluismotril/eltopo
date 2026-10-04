@@ -4,66 +4,63 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ELTOPO - Análisis de mercado</title>
+    <link rel="icon" type="image/png" href="favicon.png">
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
 
-    <!-- ============================================================
-         HEADER
-         ============================================================ -->
+    <!-- HEADER -->
     <header class="header">
         <div class="header-content">
             <div class="header-logo">
                 <span class="icon">📈</span>
                 <h1>ELTOPO</h1>
             </div>
-
             <div class="header-search">
-                <input
-                    type="text"
-                    id="searchInput"
+                <input type="text" id="searchInput"
                     placeholder="🔍 Buscar ticker o nombre (ej: NVDA, Microsoft)..."
                     autocomplete="off">
                 <button id="searchButton">Buscar</button>
             </div>
-
-            <button class="theme-toggle" id="themeToggle" title="Cambiar tema">
-                🌙
-            </button>
+            <button class="theme-toggle" id="themeToggle" title="Cambiar tema">🌙</button>
         </div>
     </header>
 
-    <!-- ============================================================
-         MINI-WIDGET ÍNDICES (siempre visible)
-         ============================================================ -->
+    <!-- MINI-WIDGET ÍNDICES -->
     <div class="mini-indices" id="miniIndices">
-        <div class="mini-indices-inner" id="miniIndicesInner">
-            <!-- Se rellena con JS -->
-        </div>
+        <div class="mini-indices-inner" id="miniIndicesInner"></div>
     </div>
 
-    <!-- ============================================================
-         TABS
-         ============================================================ -->
+    <!-- TABS -->
     <nav class="tabs">
         <button class="tab active" data-tab="top15">🎯 Top 15</button>
         <button class="tab" data-tab="sectors">🏆 Por Sector</button>
         <button class="tab" data-tab="indices">📊 Índices</button>
     </nav>
 
-    <!-- ============================================================
-         CONTENIDO
-         ============================================================ -->
+    <!-- CONTENIDO -->
     <main class="container">
 
         <div class="update-info" id="updateInfo"></div>
 
-        <!-- ========================================================
-             TAB 1: TOP 15
-             ======================================================== -->
-        <div class="tab-content active" id="tab-top15">
-            <section class="destacados-section">
+        <!-- TOP 5 PUNTUACIÓN MÁXIMA -->
+        <section class="top-score-section">
+            <h2 class="top-score-title">🏆 Top 5 · Puntuación máxima</h2>
+            <div class="top-score-row" id="topScoreRow">
+                <div class="loading">Cargando...</div>
+            </div>
+        </section>
 
+        <!-- TAB 1: TOP 15 -->
+        <div class="tab-content active" id="tab-top15">
+
+            <!-- TÍTULO: TOP 15 POSIBLES OPORTUNIDADES -->
+            <section class="top-score-section">
+                <h2 class="top-score-title">💎 Top 15 · Posibles oportunidades</h2>
+            </section>
+
+            <!-- COLUMNAS LONG Y SHORT -->
+            <section class="destacados-section">
                 <div class="column long-column">
                     <h2 class="column-title">
                         <span class="dot green"></span> LONG
@@ -85,22 +82,17 @@
                     </div>
                     <button class="btn-more" id="shortMoreBtn">Ver más</button>
                 </div>
-
             </section>
         </div>
 
-        <!-- ========================================================
-             TAB 2: TOP POR SECTOR
-             ======================================================== -->
+        <!-- TAB 2: TOP POR SECTOR -->
         <div class="tab-content" id="tab-sectors">
             <div id="sectorsContainer">
                 <div class="loading">Cargando sectores...</div>
             </div>
         </div>
 
-        <!-- ========================================================
-             TAB 3: ÍNDICES
-             ======================================================== -->
+        <!-- TAB 3: ÍNDICES -->
         <div class="tab-content" id="tab-indices">
             <div class="indices-title">Mercado americano · últimos 20 días</div>
             <div class="indices-row" id="indicesRow">
@@ -110,9 +102,7 @@
 
     </main>
 
-    <!-- ============================================================
-         FOOTER
-         ============================================================ -->
+    <!-- FOOTER -->
     <footer class="footer">
         <p>⚠️ Esta aplicación ofrece análisis de datos, no asesoramiento financiero.</p>
         <p class="small">
@@ -121,9 +111,7 @@
         </p>
     </footer>
 
-    <!-- ============================================================
-         MODAL
-         ============================================================ -->
+    <!-- MODAL -->
     <div id="modal" class="modal hidden">
         <div class="modal-content">
             <button class="modal-close" id="modalClose">×</button>

@@ -1,17 +1,10 @@
 /* ============================================================
    ELTOPO · Lógica de la web
-   - Tema claro/oscuro con localStorage
-   - Pestañas (Top 15 / Por Sector / Índices)
-   - Sparklines en SVG
-   - Chart de velas 5d
-   - Modal de detalle con "¿Por qué?"
-   - Índices clickables (abren el modal del ticker)
    ============================================================ */
 
 const API_URL = "https://eltopo-api.onrender.com";
 const VISIBLE_DEFAULT = 5;
 
-// Estado global
 let allLong = [];
 let allShort = [];
 let allIndices = [];
@@ -19,9 +12,7 @@ let topBySector = { long: {}, short: {} };
 let longExpanded = false;
 let shortExpanded = false;
 
-// ============================================================
 // UTILIDADES
-// ============================================================
 function escapeHTML(str) {
     if (str === null || str === undefined) return "";
     return String(str)
@@ -46,15 +37,11 @@ function strengthClass(strength) {
     return "gray";
 }
 
-// ============================================================
-// TEMA (claro/oscuro)
-// ============================================================
+// TEMA
 function applyTheme(theme) {
     document.documentElement.setAttribute("data-theme", theme);
     const btn = document.getElementById("themeToggle");
-    if (btn) {
-        btn.textContent = theme === "dark" ? "☀️" : "🌙";
-    }
+    if (btn) btn.textContent = theme === "dark" ? "☀️" : "🌙";
     localStorage.setItem("eltopo-theme", theme);
 }
 
@@ -64,13 +51,10 @@ function toggleTheme() {
 }
 
 function initTheme() {
-    const saved = localStorage.getItem("eltopo-theme") || "light";
-    applyTheme(saved);
+    applyTheme(localStorage.getItem("eltopo-theme") || "light");
 }
 
-// ============================================================
-// SPARKLINE (SVG inline)
-// ============================================================
+// SPARKLINE
 function drawSparkline(data, options = {}) {
     const width = options.width || 70;
     const height = options.height || 26;
@@ -100,16 +84,12 @@ function drawSparkline(data, options = {}) {
 
 function sparklineColor(data) {
     if (!data || data.length < 2) return "var(--text-tertiary)";
-    const first = data[0];
-    const last = data[data.length - 1];
-    if (last > first) return "var(--green)";
-    if (last < first) return "var(--red)";
+    if (data[data.length - 1] > data[0]) return "var(--green)";
+    if (data[data.length - 1] < data[0]) return "var(--red)";
     return "var(--text-tertiary)";
 }
 
-// ============================================================
-// CANDLESTICK (SVG)
-// ============================================================
+// CANDLESTICK
 function drawCandlestick(candles) {
     if (!candles || candles.length === 0) {
         return `<div class="loading">Sin datos de gráfico</div>`;
@@ -173,9 +153,7 @@ function drawCandlestick(candles) {
     return svg;
 }
 
-// ============================================================
 // API
-// ============================================================
 async function fetchDestacados() {
     try {
         const res = await fetch(`${API_URL}/destacados`);
@@ -188,6 +166,7 @@ async function fetchDestacados() {
         topBySector = data.top_by_sector || { long: {}, short: {} };
 
         updateUpdateInfo(data.timestamp);
+        renderTopScore();
         renderMiniIndices();
         renderLists();
         renderIndices();
@@ -210,9 +189,62 @@ function updateUpdateInfo(timestamp) {
         `Última actualización: ${date.toLocaleString("es-ES")}`;
 }
 
-// ============================================================
-// MINI-WIDGET ÍNDICES
-// ============================================================
+// TOP 5 PUNTUACIÓN MÁXIMA
+function renderTopScore() {
+    const container = document.getElementById("topScoreRow");
+    if (!container) return;
+
+    const all = [
+        ...allLong.map(t => ({...t, _side: "long"})),
+        ...allShort.map(t => ({...t, _side: "short"})),
+    ];
+    all.sort((a, b) => (b.score || 0) - (a.score || 0));
+    const top5 = all.slice(0, 5);
+
+    if (top5.length === 0) {
+        container.innerHTML = `<div class="loading">Sin datos</div>`;
+        return;
+    }
+
+    container.innerHTML = top5.map(item => {
+        const score = item.score || 0;
+        const sClass = scoreClass(score);
+        const side = item._side;
+        const sideLabel = side === "long" ? "LONG" : "SHORT";
+        const name = item.name ? escapeHTML(item.name) : "";
+        const strength = item.strength || "";
+
+        const sparkColor = sparklineColor(item.sparkline);
+        const sparkSVG = drawSparkline(item.sparkline, {
+            width: 70, height: 26, color: sparkColor, strokeWidth: 2,
+        });
+
+        return `
+            <div class="top-score-card ${side}" data-ticker="${escapeHTML(item.ticker)}">
+                <div class="top-score-header">
+                    <div class="top-score-ticker">${escapeHTML(item.ticker)}</div>
+                    <span class="top-score-badge ${side}">${sideLabel}</span>
+                </div>
+                ${name ? `<div class="top-score-name">${name}</div>` : ""}
+                <div class="top-score-body">
+                    <div class="top-score-sparkline">${sparkSVG}</div>
+                    <div>
+                        <div class="top-score-value ${sClass}">${score}</div>
+                        <div class="top-score-strength">${escapeHTML(strength)}</div>
+                    </div>
+                </div>
+            </div>
+        `;
+    }).join("");
+
+    container.querySelectorAll(".top-score-card").forEach(card => {
+        card.addEventListener("click", () => {
+            openTickerModal(card.dataset.ticker);
+        });
+    });
+}
+
+// MINI-WIDGET
 function renderMiniIndices() {
     const container = document.getElementById("miniIndicesInner");
     if (!container) return;
@@ -222,8 +254,9 @@ function renderMiniIndices() {
         return;
     }
 
-    const main = allIndices.slice(0, 6);
-    container.innerHTML = main.map(idx => {
+    const items = [...allIndices, ...allIndices, ...allIndices];
+
+    container.innerHTML = items.map(idx => {
         const changeClass = idx.change_pct >= 0 ? "up" : "down";
         const sign = idx.change_pct >= 0 ? "+" : "";
         return `<div class="mini-index-item">
@@ -234,9 +267,7 @@ function renderMiniIndices() {
     }).join("");
 }
 
-// ============================================================
 // TABS
-// ============================================================
 function setupTabs() {
     const tabs = document.querySelectorAll(".tab");
     const contents = document.querySelectorAll(".tab-content");
@@ -244,19 +275,15 @@ function setupTabs() {
     tabs.forEach(tab => {
         tab.addEventListener("click", () => {
             const target = tab.dataset.tab;
-
             tabs.forEach(t => t.classList.remove("active"));
             contents.forEach(c => c.classList.remove("active"));
-
             tab.classList.add("active");
             document.getElementById(`tab-${target}`).classList.add("active");
         });
     });
 }
 
-// ============================================================
-// RENDER LISTAS (Top 15)
-// ============================================================
+// RENDER LISTAS (columnas grandes LONG/SHORT)
 function renderLists() {
     renderList("long", allLong, longExpanded);
     renderList("short", allShort, shortExpanded);
@@ -336,9 +363,7 @@ function renderList(side, data, expanded) {
     });
 }
 
-// ============================================================
-// RENDER ÍNDICES (pestaña completa · 2 filas de 5 · clickables)
-// ============================================================
+// RENDER ÍNDICES
 function renderIndices() {
     const container = document.getElementById("indicesRow");
     if (!container) return;
@@ -348,7 +373,10 @@ function renderIndices() {
         return;
     }
 
-    container.innerHTML = allIndices.map(idx => {
+    const onlyIndices = allIndices.filter(i => !i.name || !i.name.match(/^[+-]/));
+    const items = onlyIndices.length > 0 ? onlyIndices : allIndices;
+
+    container.innerHTML = items.map(idx => {
         const changeClass = idx.change_pct >= 0 ? "up" : "down";
         const sign = idx.change_pct >= 0 ? "+" : "";
         const sparkColor = sparklineColor(idx.sparkline);
@@ -366,7 +394,6 @@ function renderIndices() {
         `;
     }).join("");
 
-    // Click en cualquier índice → abre el modal de ese ticker
     container.querySelectorAll(".index-card").forEach(card => {
         card.addEventListener("click", () => {
             openTickerModal(card.dataset.ticker);
@@ -374,9 +401,7 @@ function renderIndices() {
     });
 }
 
-// ============================================================
 // RENDER SECTORES
-// ============================================================
 const SECTOR_EMOJIS = {
     "Tecnología": "💻",
     "Financiero": "🏦",
@@ -409,8 +434,8 @@ function renderSectors() {
     if (hasLong) {
         html += `<div class="indices-title">🟢 LONG por sector</div>`;
         html += `<div class="sector-grid">`;
-        html += Object.entries(topBySector.long).map(([sector, tickers]) =>
-            renderSectorCard(sector, tickers)
+        html += Object.entries(topBySector.long).map(([s, t]) =>
+            renderSectorCard(s, t)
         ).join("");
         html += `</div>`;
     }
@@ -418,8 +443,8 @@ function renderSectors() {
     if (hasShort) {
         html += `<div class="indices-title" style="margin-top:30px;">🔴 SHORT por sector</div>`;
         html += `<div class="sector-grid">`;
-        html += Object.entries(topBySector.short).map(([sector, tickers]) =>
-            renderSectorCard(sector, tickers)
+        html += Object.entries(topBySector.short).map(([s, t]) =>
+            renderSectorCard(s, t)
         ).join("");
         html += `</div>`;
     }
@@ -457,9 +482,7 @@ function renderSectorCard(sector, tickers) {
     `;
 }
 
-// ============================================================
 // BÚSQUEDA
-// ============================================================
 async function handleSearch() {
     const query = document.getElementById("searchInput").value.trim().toUpperCase();
     if (!query) return;
@@ -477,7 +500,7 @@ async function handleSearch() {
         const data = await res.json();
 
         if (data.count === 0) {
-            showToast(`No se encontraron resultados para "${query}"`, "error");
+            showToast(`No se encontraron resultados`, "error");
             return;
         }
 
@@ -523,9 +546,7 @@ function showSearchResults(results) {
     body.innerHTML = html;
 }
 
-// ============================================================
-// MODAL DE DETALLE
-// ============================================================
+// MODAL
 async function openTickerModal(ticker) {
     const modal = document.getElementById("modal");
     const body = document.getElementById("modalBody");
@@ -545,7 +566,7 @@ async function openTickerModal(ticker) {
                 </div>
                 <p style="color:var(--red); margin-top:10px;">${escapeHTML(detail)}</p>
                 <p style="color:var(--text-secondary); margin-top:20px; font-size:0.85rem;">
-                    💡 Consejo: prueba con un ticker del Top 15 LONG o SHORT.
+                    💡 Consejo: prueba con un ticker del Top 15.
                 </p>
             `;
             return;
@@ -610,7 +631,7 @@ function renderTickerDetail(data) {
 
     if (data.reasons && data.reasons.length > 0) {
         html += `<div class="modal-reasons-title">🎯 ¿Por qué está en ${data.side_label}?</div>`;
-        html += `<div class="modal-reasons-sub">Estos son los motivos que componen el score de ${score}/100</div>`;
+        html += `<div class="modal-reasons-sub">Motivos que componen el score de ${score}/100</div>`;
         html += `<div class="reasons-list">`;
 
         for (const r of data.reasons) {
@@ -679,7 +700,7 @@ function renderTickerDetail(data) {
         const strongText = strength === "MUY FUERTE" || strength === "FUERTE";
         const summary = strongText
             ? `${ticker} muestra una estructura claramente ${data.side_label === "LONG" ? "alcista" : "bajista"}. Las temporalidades están alineadas y los indicadores confirman la dirección.`
-            : `${ticker} presenta una señal ${data.side_label === "LONG" ? "alcista" : "bajista"} pero con menos fuerza. Considera esperar confirmación adicional.`;
+            : `${ticker} presenta una señal ${data.side_label === "LONG" ? "alcista" : "bajista"} pero con menos fuerza. Considera esperar confirmación.`;
 
         html += `
             <div class="modal-summary">
@@ -700,9 +721,7 @@ function closeModal() {
     document.getElementById("modal").classList.add("hidden");
 }
 
-// ============================================================
 // TOAST
-// ============================================================
 function showToast(message, type = "info") {
     let toast = document.getElementById("toast");
     if (!toast) {
@@ -725,26 +744,17 @@ function showToast(message, type = "info") {
         document.body.appendChild(toast);
     }
 
-    const colors = {
-        info: "var(--accent)",
-        success: "var(--green)",
-        error: "var(--red)",
-    };
-
+    const colors = { info: "var(--accent)", success: "var(--green)", error: "var(--red)" };
     toast.style.background = colors[type] || colors.info;
     toast.style.color = "#fff";
     toast.textContent = message;
     toast.style.opacity = "1";
 
     clearTimeout(toast._timeout);
-    toast._timeout = setTimeout(() => {
-        toast.style.opacity = "0";
-    }, 3000);
+    toast._timeout = setTimeout(() => { toast.style.opacity = "0"; }, 3000);
 }
 
-// ============================================================
 // INICIALIZACIÓN
-// ============================================================
 document.addEventListener("DOMContentLoaded", () => {
     initTheme();
     setupTabs();
