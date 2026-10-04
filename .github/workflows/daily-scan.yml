@@ -1,0 +1,56 @@
+name: ELTOPO Daily Scan
+
+on:
+  schedule:
+    # UTC 13:00 = 15:00 Espana (verano) / 14:00 (invierno)
+    - cron: '0 13 * * 1-5'
+
+    # UTC 21:00 = 23:00 Espana (verano) / 22:00 (invierno)
+    - cron: '0 21 * * 1-5'
+
+  # Boton para ejecutar manualmente desde GitHub
+  workflow_dispatch:
+
+jobs:
+  scan:
+    runs-on: ubuntu-latest
+    timeout-minutes: 60
+
+    steps:
+      - name: Checkout repositorio
+        uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+          fetch-depth: 0
+
+      - name: Configurar Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+          cache: 'pip'
+
+      - name: Instalar dependencias
+        run: |
+          pip install --upgrade pip
+          pip install -r requirements.txt
+
+      - name: Ejecutar scanner
+        env:
+          ALPACA_API_KEY: ${{ secrets.ALPACA_API_KEY }}
+          ALPACA_SECRET_KEY: ${{ secrets.ALPACA_SECRET_KEY }}
+          ALPACA_BASE_URL: ${{ secrets.ALPACA_BASE_URL }}
+          ALPACA_DATA_URL: ${{ secrets.ALPACA_DATA_URL }}
+          ALPACA_FEED: ${{ secrets.ALPACA_FEED }}
+        run: |
+          python -m engine.scanner
+
+      - name: Copiar JSON a public_data
+        run: |
+          cp cache/destacados.json public_data/destacados.json
+
+      - name: Commit y push de los nuevos datos
+        uses: actions-js/push@master
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          branch: main
+          message: "Auto-scan: actualizacion diaria"
