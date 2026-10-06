@@ -5,8 +5,8 @@ on:
     # UTC 13:00 = 15:00 Espana (verano) / 14:00 (invierno)
     - cron: '0 13 * * 1-5'
 
-    # UTC 21:00 = 23:00 Espana (verano) / 22:00 (invierno)
-    - cron: '0 21 * * 1-5'
+    # UTC 16:30 = 18:30 Espana (verano) / 17:30 (invierno)
+    - cron: '30 16 * * 1-5'
 
   # Boton para ejecutar manualmente desde GitHub
   workflow_dispatch:
