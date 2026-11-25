@@ -1,8 +1,8 @@
 {
-  "timestamp": "2026-11-24T23:37:27.562048+00:00",
+  "timestamp": "2026-11-25T01:47:26.141619+00:00",
   "summary": {
     "total_analyzed": 2342,
-    "total_destacados": 490,
+    "total_destacados": 504,
     "total_long": 15,
     "total_short": 15,
     "top_long_score": 85,
@@ -13,7 +13,7 @@
   "long": [
     {
       "ticker": "IFF",
-      "timestamp": "2026-11-24T23:33:39.914774+00:00",
+      "timestamp": "2026-11-25T01:43:36.489367+00:00",
       "score": 85,
       "color": "green",
       "side": "long",
@@ -489,7 +489,7 @@
     },
     {
       "ticker": "SPG",
-      "timestamp": "2026-11-24T23:35:29.204905+00:00",
+      "timestamp": "2026-11-25T01:45:26.447657+00:00",
       "score": 85,
       "color": "green",
       "side": "long",
@@ -952,7 +952,7 @@
     },
     {
       "ticker": "EXLS",
-      "timestamp": "2026-11-24T23:32:05.574728+00:00",
+      "timestamp": "2026-11-25T01:42:00.350654+00:00",
       "score": 84,
       "color": "green",
       "side": "long",
@@ -1423,7 +1423,7 @@
     },
     {
       "ticker": "ALC",
-      "timestamp": "2026-11-24T23:32:42.908504+00:00",
+      "timestamp": "2026-11-25T01:42:39.165173+00:00",
       "score": 82,
       "color": "green",
       "side": "long",
@@ -1906,7 +1906,7 @@
     },
     {
       "ticker": "IRWD",
-      "timestamp": "2026-11-24T23:32:48.578367+00:00",
+      "timestamp": "2026-11-25T01:42:43.359565+00:00",
       "score": 80,
       "color": "green",
       "side": "long",
@@ -2343,7 +2343,7 @@
     },
     {
       "ticker": "BRZE",
-      "timestamp": "2026-11-24T23:32:01.326010+00:00",
+      "timestamp": "2026-11-25T01:41:56.623114+00:00",
       "score": 79,
       "color": "green",
       "side": "long",
@@ -2812,7 +2812,7 @@
     },
     {
       "ticker": "COR",
-      "timestamp": "2026-11-24T23:33:56.983234+00:00",
+      "timestamp": "2026-11-25T01:43:54.560583+00:00",
       "score": 78,
       "color": "green",
       "side": "long",
@@ -3262,7 +3262,7 @@
     },
     {
       "ticker": "OPLN",
-      "timestamp": "2026-11-24T23:34:42.527211+00:00",
+      "timestamp": "2026-11-25T01:44:40.155234+00:00",
       "score": 78,
       "color": "green",
       "side": "long",
@@ -3721,7 +3721,7 @@
     },
     {
       "ticker": "NJR",
-      "timestamp": "2026-11-24T23:37:07.959334+00:00",
+      "timestamp": "2026-11-25T01:47:13.963283+00:00",
       "score": 78,
       "color": "green",
       "side": "long",
@@ -4174,7 +4174,7 @@
     },
     {
       "ticker": "AVPT",
-      "timestamp": "2026-11-24T23:30:40.665600+00:00",
+      "timestamp": "2026-11-25T01:40:32.620071+00:00",
       "score": 77,
       "color": "green",
       "side": "long",
@@ -4645,7 +4645,7 @@
     },
     {
       "ticker": "CXM",
-      "timestamp": "2026-11-24T23:30:54.184694+00:00",
+      "timestamp": "2026-11-25T01:40:44.156031+00:00",
       "score": 77,
       "color": "green",
       "side": "long",
@@ -5123,7 +5123,7 @@
     },
     {
       "ticker": "GKOS",
-      "timestamp": "2026-11-24T23:36:32.805555+00:00",
+      "timestamp": "2026-11-25T01:46:30.137803+00:00",
       "score": 77,
       "color": "green",
       "side": "long",
@@ -5576,7 +5576,7 @@
     },
     {
       "ticker": "ZIM",
-      "timestamp": "2026-11-24T23:31:34.030785+00:00",
+      "timestamp": "2026-11-25T01:41:27.688321+00:00",
       "score": 75,
       "color": "green",
       "side": "long",
@@ -6029,7 +6029,7 @@
     },
     {
       "ticker": "RCL",
-      "timestamp": "2026-11-24T23:30:25.627229+00:00",
+      "timestamp": "2026-11-25T01:40:15.385951+00:00",
       "score": 74,
       "color": "yellow",
       "side": "long",
@@ -6484,7 +6484,7 @@
     },
     {
       "ticker": "BIIB",
-      "timestamp": "2026-11-24T23:34:30.487434+00:00",
+      "timestamp": "2026-11-25T01:44:26.048919+00:00",
       "score": 73,
       "color": "yellow",
       "side": "long",
@@ -6896,7 +6896,7 @@
   "short": [
     {
       "ticker": "SYF",
-      "timestamp": "2026-11-24T23:31:30.671696+00:00",
+      "timestamp": "2026-11-25T01:41:24.077677+00:00",
       "score": 78,
       "color": "green",
       "side": "short",
@@ -7331,7 +7331,7 @@
     },
     {
       "ticker": "VIST",
-      "timestamp": "2026-11-24T23:36:39.398909+00:00",
+      "timestamp": "2026-11-25T01:46:36.943482+00:00",
       "score": 74,
       "color": "yellow",
       "side": "short",
@@ -7768,7 +7768,7 @@
     },
     {
       "ticker": "ALT",
-      "timestamp": "2026-11-24T23:30:25.454499+00:00",
+      "timestamp": "2026-11-25T01:40:15.351563+00:00",
       "score": 73,
       "color": "yellow",
       "side": "short",
@@ -8213,7 +8213,7 @@
     },
     {
       "ticker": "WOOF",
-      "timestamp": "2026-11-24T23:31:50.429974+00:00",
+      "timestamp": "2026-11-25T01:41:42.540227+00:00",
       "score": 73,
       "color": "yellow",
       "side": "short",
@@ -8669,7 +8669,7 @@
     },
     {
       "ticker": "NMZ",
-      "timestamp": "2026-11-24T23:32:44.979439+00:00",
+      "timestamp": "2026-11-25T01:42:42.550020+00:00",
       "score": 73,
       "color": "yellow",
       "side": "short",
@@ -9120,7 +9120,7 @@
     },
     {
       "ticker": "PM",
-      "timestamp": "2026-11-24T23:30:25.990659+00:00",
+      "timestamp": "2026-11-25T01:40:15.618219+00:00",
       "score": 72,
       "color": "yellow",
       "side": "short",
@@ -9587,8 +9587,476 @@
       ]
     },
     {
+      "ticker": "AIV",
+      "timestamp": "2026-11-25T01:40:51.249763+00:00",
+      "score": 71,
+      "color": "yellow",
+      "side": "short",
+      "side_label": "SHORT",
+      "side_color": "red",
+      "structure_bias": "bearish",
+      "confluence": "medium",
+      "timeframes": {
+        "daily": {
+          "timeframe": "daily",
+          "score": 54,
+          "color": "red",
+          "structure_bias": "bearish",
+          "regime": "trending",
+          "rsi_penalty": 0,
+          "modules": {
+            "sr": {
+              "score": 49,
+              "color": "red"
+            },
+            "pattern": {
+              "score": 0,
+              "color": "red"
+            },
+            "candle": {
+              "score": 60,
+              "color": "yellow"
+            },
+            "trend": {
+              "score": 100,
+              "color": "green"
+            },
+            "momentum": {
+              "score": 73,
+              "color": "yellow"
+            },
+            "volume": {
+              "score": 75,
+              "color": "green"
+            }
+          },
+          "key_levels": {
+            "supports": [
+              {
+                "price": 1.35,
+                "score": 49,
+                "color": "red"
+              }
+            ],
+            "resistances": [
+              {
+                "price": 1.485,
+                "score": 44,
+                "color": "red"
+              },
+              {
+                "price": 1.73,
+                "score": 33,
+                "color": "red"
+              },
+              {
+                "price": 2.495,
+                "score": 30,
+                "color": "red"
+              }
+            ]
+          },
+          "patterns": [],
+          "candles": [
+            {
+              "name": "bearish_harami",
+              "direction": "bearish",
+              "color": "yellow",
+              "in_zone": false,
+              "zone": null
+            }
+          ],
+          "indicators": {
+            "close": 1.43,
+            "ema_8": 1.4435352128604624,
+            "ema_20": 1.5164231177198353,
+            "ema_200": 2.9879542685914284,
+            "vwap": 1.4483333333333333,
+            "rsi": 36.331252776281026,
+            "adx": 60.09516220646141,
+            "plus_di": 12.405166659251355,
+            "minus_di": 30.484562235627205,
+            "stoch_k": 22.31968810916176,
+            "stoch_d": 20.74398960363871,
+            "atr": 0.06536451621781215,
+            "atr_pct": 4.570945190056794,
+            "atr_pctl": 68.0,
+            "rel_vol": 2.177766065459507,
+            "bb_upper": 1.7163348375129843,
+            "bb_mid": 1.52,
+            "bb_lower": 1.3236651624870157,
+            "bb_width": 25.833531251708465,
+            "bb_pct_b": 0.2707997186336122,
+            "macd": -0.09652406692743831,
+            "macd_signal": -0.10612116485104646,
+            "macd_hist": 0.009597097923608147,
+            "kc_upper": 1.6144698920465534,
+            "kc_mid": 1.5164231177198353,
+            "kc_lower": 1.4183763433931171,
+            "obv": -4726338.0
+          }
+        },
+        "h1": {
+          "timeframe": "h1",
+          "score": 58,
+          "color": "red",
+          "structure_bias": "bearish",
+          "regime": "ranging",
+          "rsi_penalty": 0,
+          "modules": {
+            "sr": {
+              "score": 61,
+              "color": "yellow"
+            },
+            "pattern": {
+              "score": 93,
+              "color": "green"
+            },
+            "candle": {
+              "score": 100,
+              "color": "green"
+            },
+            "trend": {
+              "score": 58,
+              "color": "red"
+            },
+            "momentum": {
+              "score": 45,
+              "color": "red"
+            },
+            "volume": {
+              "score": 65,
+              "color": "yellow"
+            }
+          },
+          "key_levels": {
+            "supports": [
+              {
+                "price": 1.42,
+                "score": 37,
+                "color": "red"
+              },
+              {
+                "price": 1.395,
+                "score": 43,
+                "color": "red"
+              },
+              {
+                "price": 1.385,
+                "score": 43,
+                "color": "red"
+              }
+            ],
+            "resistances": [
+              {
+                "price": 1.43,
+                "score": 49,
+                "color": "red"
+              },
+              {
+                "price": 1.43,
+                "score": 38,
+                "color": "red"
+              },
+              {
+                "price": 1.44,
+                "score": 61,
+                "color": "yellow"
+              }
+            ]
+          },
+          "patterns": [
+            {
+              "name": "rebote_en_resistencia",
+              "direction": "bearish",
+              "color": "yellow",
+              "level": 1.44,
+              "level_score": 61,
+              "weight": 38
+            },
+            {
+              "name": "pullback_a_ema20",
+              "direction": "bearish",
+              "color": "red",
+              "level": 1.440462044135863,
+              "weight": 30
+            },
+            {
+              "name": "fakeout_bajista",
+              "direction": "bearish",
+              "color": "red",
+              "level": 1.44,
+              "level_score": 61,
+              "relative_volume": 1.56,
+              "weight": 25
+            }
+          ],
+          "candles": [
+            {
+              "name": "shooting_star",
+              "direction": "bearish",
+              "color": "red",
+              "in_zone": true,
+              "zone": "resistance"
+            },
+            {
+              "name": "three_black_crows",
+              "direction": "bearish",
+              "color": "red",
+              "in_zone": true,
+              "zone": "resistance"
+            }
+          ],
+          "indicators": {
+            "close": 1.43,
+            "ema_8": 1.4433164325421957,
+            "ema_20": 1.440462044135863,
+            "ema_200": 1.5777291785349985,
+            "vwap": 1.4479773073146784,
+            "rsi": 46.03794000254241,
+            "adx": 14.34046852900101,
+            "plus_di": 22.864395844206474,
+            "minus_di": 19.86854984876487,
+            "stoch_k": 35.925925925925824,
+            "stoch_d": 52.469135802469076,
+            "atr": 0.020422339037693867,
+            "atr_pct": 1.4281355970415293,
+            "atr_pctl": 14.000000000000002,
+            "rel_vol": 1.5574982102102461,
+            "bb_upper": 1.4784728827066882,
+            "bb_mid": 1.437,
+            "bb_lower": 1.395527117293312,
+            "bb_width": 5.772147906289233,
+            "bb_pct_b": 0.415607506120243,
+            "macd": 0.004424555909204209,
+            "macd_signal": 0.0060305737070084145,
+            "macd_hist": -0.001606017797804206,
+            "kc_upper": 1.4710955526924039,
+            "kc_mid": 1.440462044135863,
+            "kc_lower": 1.4098285355793223,
+            "obv": -853427.0
+          }
+        },
+        "m5": {
+          "timeframe": "m5",
+          "score": 58,
+          "color": "red",
+          "structure_bias": "bearish",
+          "regime": "ranging",
+          "rsi_penalty": 0,
+          "modules": {
+            "sr": {
+              "score": 98,
+              "color": "green"
+            },
+            "pattern": {
+              "score": 98,
+              "color": "green"
+            },
+            "candle": {
+              "score": 0,
+              "color": "red"
+            },
+            "trend": {
+              "score": 70,
+              "color": "yellow"
+            },
+            "momentum": {
+              "score": 58,
+              "color": "red"
+            },
+            "volume": {
+              "score": 75,
+              "color": "green"
+            }
+          },
+          "key_levels": {
+            "supports": [
+              {
+                "price": 1.415,
+                "score": 30,
+                "color": "red"
+              },
+              {
+                "price": 1.415,
+                "score": 48,
+                "color": "red"
+              },
+              {
+                "price": 1.405,
+                "score": 48,
+                "color": "red"
+              }
+            ],
+            "resistances": [
+              {
+                "price": 1.4333333333333333,
+                "score": 85,
+                "color": "green"
+              },
+              {
+                "price": 1.436,
+                "score": 98,
+                "color": "green"
+              },
+              {
+                "price": 1.446,
+                "score": 90,
+                "color": "green"
+              }
+            ]
+          },
+          "patterns": [
+            {
+              "name": "rebote_en_resistencia",
+              "direction": "bearish",
+              "color": "red",
+              "level": 1.4333333333333333,
+              "level_score": 85,
+              "weight": 45
+            },
+            {
+              "name": "pullback_a_ema8",
+              "direction": "bearish",
+              "color": "red",
+              "level": 1.4388660345953679,
+              "weight": 28
+            },
+            {
+              "name": "fakeout_bajista",
+              "direction": "bearish",
+              "color": "red",
+              "level": 1.4333333333333333,
+              "level_score": 85,
+              "relative_volume": 3.68,
+              "weight": 25
+            }
+          ],
+          "candles": [],
+          "indicators": {
+            "close": 1.43,
+            "ema_8": 1.4388660345953679,
+            "ema_20": 1.4397195786392207,
+            "ema_200": 1.441082998180113,
+            "vwap": 1.4487178325969565,
+            "rsi": 39.00320865047392,
+            "adx": 16.43244933743988,
+            "plus_di": 27.61055530491619,
+            "minus_di": 40.09408346940632,
+            "stoch_k": 33.33333333333371,
+            "stoch_d": 55.555555555556076,
+            "atr": 0.004656626882807614,
+            "atr_pct": 0.32563824355298,
+            "atr_pctl": 35.0,
+            "rel_vol": 3.675787765405942,
+            "bb_upper": 1.4503117402250472,
+            "bb_mid": 1.4380000000000002,
+            "bb_lower": 1.4256882597749532,
+            "bb_width": 1.712342173163699,
+            "bb_pct_b": 0.17510685517368885,
+            "macd": -0.0011586063823050274,
+            "macd_signal": -0.0012441086864537713,
+            "macd_hist": 8.550230414874384e-05,
+            "kc_upper": 1.4467045189634322,
+            "kc_mid": 1.4397195786392207,
+            "kc_lower": 1.4327346383150092,
+            "obv": 196375.0
+          }
+        }
+      },
+      "alignment": "aligned_bearish",
+      "regime_daily": "trending",
+      "hard_blocks": [],
+      "disclaimer": "Esta aplicacion ofrece analisis de datos, no asesoramiento financiero.",
+      "reasons": [
+        {
+          "icon": "\u2705",
+          "label": "Tendencia fuerte",
+          "detail": "EMAs alineadas y ADX alto",
+          "points": 25
+        },
+        {
+          "icon": "\u2705",
+          "label": "3 temporalidades alineadas",
+          "detail": "Diario, 1h y 5m apuntan abajo",
+          "points": 15
+        },
+        {
+          "icon": "\u2705",
+          "label": "Vela: bearish harami",
+          "detail": "bearish en None",
+          "points": 5
+        },
+        {
+          "icon": "\u2705",
+          "label": "R\u00e9gimen en tendencia",
+          "detail": "El mercado favorece la direcci\u00f3n",
+          "points": 3
+        }
+      ],
+      "sparkline": [
+        1.61,
+        1.65,
+        1.58,
+        1.63,
+        1.65,
+        1.69,
+        1.59,
+        1.55,
+        1.53,
+        1.57,
+        1.53,
+        1.45,
+        1.46,
+        1.36,
+        1.42,
+        1.41,
+        1.44,
+        1.41,
+        1.46,
+        1.43
+      ],
+      "chart_5d": [
+        {
+          "date": "2026-11-18",
+          "o": 1.39,
+          "h": 1.43,
+          "l": 1.39,
+          "c": 1.41
+        },
+        {
+          "date": "2026-11-19",
+          "o": 1.41,
+          "h": 1.46,
+          "l": 1.4,
+          "c": 1.44
+        },
+        {
+          "date": "2026-11-20",
+          "o": 1.44,
+          "h": 1.45,
+          "l": 1.39,
+          "c": 1.41
+        },
+        {
+          "date": "2026-11-23",
+          "o": 1.43,
+          "h": 1.47,
+          "l": 1.43,
+          "c": 1.46
+        },
+        {
+          "date": "2026-11-24",
+          "o": 1.45,
+          "h": 1.49,
+          "l": 1.43,
+          "c": 1.43
+        }
+      ]
+    },
+    {
       "ticker": "CSIQ",
-      "timestamp": "2026-11-24T23:32:36.009662+00:00",
+      "timestamp": "2026-11-25T01:42:30.908187+00:00",
       "score": 71,
       "color": "yellow",
       "side": "short",
@@ -9999,7 +10467,7 @@
     },
     {
       "ticker": "XP",
-      "timestamp": "2026-11-24T23:28:35.658002+00:00",
+      "timestamp": "2026-11-25T01:38:18.860291+00:00",
       "score": 70,
       "color": "yellow",
       "side": "short",
@@ -10434,7 +10902,7 @@
     },
     {
       "ticker": "NAC",
-      "timestamp": "2026-11-24T23:33:45.105877+00:00",
+      "timestamp": "2026-11-25T01:43:43.338106+00:00",
       "score": 70,
       "color": "yellow",
       "side": "short",
@@ -10863,459 +11331,8 @@
       ]
     },
     {
-      "ticker": "BKV",
-      "timestamp": "2026-11-24T23:34:13.997488+00:00",
-      "score": 70,
-      "color": "yellow",
-      "side": "short",
-      "side_label": "SHORT",
-      "side_color": "red",
-      "structure_bias": "bearish",
-      "confluence": "low",
-      "timeframes": {
-        "daily": {
-          "timeframe": "daily",
-          "score": 51,
-          "color": "red",
-          "structure_bias": "bearish",
-          "regime": "trending",
-          "rsi_penalty": 0,
-          "modules": {
-            "sr": {
-              "score": 51,
-              "color": "red"
-            },
-            "pattern": {
-              "score": 0,
-              "color": "red"
-            },
-            "candle": {
-              "score": 60,
-              "color": "yellow"
-            },
-            "trend": {
-              "score": 100,
-              "color": "green"
-            },
-            "momentum": {
-              "score": 50,
-              "color": "red"
-            },
-            "volume": {
-              "score": 45,
-              "color": "red"
-            }
-          },
-          "key_levels": {
-            "supports": [
-              {
-                "price": 17.09,
-                "score": 51,
-                "color": "yellow"
-              }
-            ],
-            "resistances": [
-              {
-                "price": 17.475,
-                "score": 49,
-                "color": "red"
-              },
-              {
-                "price": 19.535,
-                "score": 37,
-                "color": "red"
-              },
-              {
-                "price": 21.11,
-                "score": 39,
-                "color": "red"
-              }
-            ]
-          },
-          "patterns": [],
-          "candles": [
-            {
-              "name": "doji",
-              "direction": "neutral",
-              "color": "yellow",
-              "in_zone": true,
-              "zone": "VWAP"
-            }
-          ],
-          "indicators": {
-            "close": 17.37,
-            "ema_8": 18.02922617136021,
-            "ema_20": 18.997000676610103,
-            "ema_200": 24.258415033753977,
-            "vwap": 17.345,
-            "rsi": 29.08610440150757,
-            "adx": 36.91746401702064,
-            "plus_di": 13.845096082969125,
-            "minus_di": 36.41421377136525,
-            "stoch_k": 5.737948798951156,
-            "stoch_d": 9.240218510118995,
-            "atr": 0.7608198222394887,
-            "atr_pct": 4.380079575356873,
-            "atr_pctl": 0.0,
-            "rel_vol": 0.6461770743659361,
-            "bb_upper": 21.3252445301942,
-            "bb_mid": 18.964499999999997,
-            "bb_lower": 16.603755469805794,
-            "bb_width": 24.896459492148,
-            "bb_pct_b": 0.16228874416393818,
-            "macd": -1.0591921071961146,
-            "macd_signal": -1.007696196476957,
-            "macd_hist": -0.05149591071915749,
-            "kc_upper": 20.138230409969335,
-            "kc_mid": 18.997000676610103,
-            "kc_lower": 17.85577094325087,
-            "obv": -1484989.0
-          }
-        },
-        "h1": {
-          "timeframe": "h1",
-          "score": 89,
-          "color": "green",
-          "structure_bias": "bearish",
-          "regime": "trending",
-          "rsi_penalty": 0,
-          "modules": {
-            "sr": {
-              "score": 73,
-              "color": "yellow"
-            },
-            "pattern": {
-              "score": 91,
-              "color": "green"
-            },
-            "candle": {
-              "score": 90,
-              "color": "green"
-            },
-            "trend": {
-              "score": 100,
-              "color": "green"
-            },
-            "momentum": {
-              "score": 73,
-              "color": "yellow"
-            },
-            "volume": {
-              "score": 75,
-              "color": "green"
-            }
-          },
-          "key_levels": {
-            "supports": [
-              {
-                "price": 17.355,
-                "score": 73,
-                "color": "yellow"
-              },
-              {
-                "price": 17.09,
-                "score": 44,
-                "color": "red"
-              }
-            ],
-            "resistances": [
-              {
-                "price": 17.475,
-                "score": 56,
-                "color": "yellow"
-              },
-              {
-                "price": 17.575,
-                "score": 45,
-                "color": "red"
-              },
-              {
-                "price": 17.97,
-                "score": 39,
-                "color": "red"
-              }
-            ]
-          },
-          "patterns": [
-            {
-              "name": "rebote_en_resistencia",
-              "direction": "bearish",
-              "color": "yellow",
-              "level": 17.475,
-              "level_score": 56,
-              "weight": 38
-            },
-            {
-              "name": "pullback_a_ema8",
-              "direction": "bearish",
-              "color": "red",
-              "level": 17.425346396685683,
-              "weight": 28
-            },
-            {
-              "name": "fakeout_bajista",
-              "direction": "bearish",
-              "color": "red",
-              "level": 17.475,
-              "level_score": 56,
-              "relative_volume": 2.41,
-              "weight": 25
-            }
-          ],
-          "candles": [
-            {
-              "name": "bearish_engulfing",
-              "direction": "bearish",
-              "color": "red",
-              "in_zone": true,
-              "zone": "EMA_8"
-            }
-          ],
-          "indicators": {
-            "close": 17.37,
-            "ema_8": 17.425346396685683,
-            "ema_20": 17.617771851691398,
-            "ema_200": 19.60735637641119,
-            "vwap": 17.382147097579097,
-            "rsi": 39.125640483715145,
-            "adx": 35.46080721706472,
-            "plus_di": 16.963483514923393,
-            "minus_di": 35.05190704867704,
-            "stoch_k": 42.6136363636364,
-            "stoch_d": 38.51010101010101,
-            "atr": 0.2266694675274307,
-            "atr_pct": 1.3049479995822146,
-            "atr_pctl": 28.000000000000004,
-            "rel_vol": 2.4050575872821325,
-            "bb_upper": 17.901905240868622,
-            "bb_mid": 17.5235,
-            "bb_lower": 17.145094759131375,
-            "bb_width": 4.318831750148357,
-            "bb_pct_b": 0.29717511357976895,
-            "macd": -0.25987910024487704,
-            "macd_signal": -0.2972672484478275,
-            "macd_hist": 0.037388148202950444,
-            "kc_upper": 17.957776052982545,
-            "kc_mid": 17.617771851691398,
-            "kc_lower": 17.27776765040025,
-            "obv": -704074.0
-          }
-        },
-        "m5": {
-          "timeframe": "m5",
-          "score": 62,
-          "color": "yellow",
-          "structure_bias": "neutral",
-          "regime": "ranging",
-          "rsi_penalty": 0,
-          "modules": {
-            "sr": {
-              "score": 87,
-              "color": "green"
-            },
-            "pattern": {
-              "score": 70,
-              "color": "yellow"
-            },
-            "candle": {
-              "score": 90,
-              "color": "green"
-            },
-            "trend": {
-              "score": 70,
-              "color": "yellow"
-            },
-            "momentum": {
-              "score": 60,
-              "color": "yellow"
-            },
-            "volume": {
-              "score": 75,
-              "color": "green"
-            }
-          },
-          "key_levels": {
-            "supports": [
-              {
-                "price": 17.345,
-                "score": 72,
-                "color": "yellow"
-              },
-              {
-                "price": 17.338749999999997,
-                "score": 87,
-                "color": "green"
-              },
-              {
-                "price": 17.119999999999997,
-                "score": 59,
-                "color": "yellow"
-              }
-            ],
-            "resistances": [
-              {
-                "price": 17.490833333333335,
-                "score": 73,
-                "color": "yellow"
-              },
-              {
-                "price": 17.587,
-                "score": 75,
-                "color": "green"
-              },
-              {
-                "price": 17.65,
-                "score": 67,
-                "color": "yellow"
-              }
-            ]
-          },
-          "patterns": [
-            {
-              "name": "rebote_en_soporte",
-              "direction": "bullish",
-              "color": "green",
-              "level": 17.345,
-              "level_score": 72,
-              "weight": 45
-            },
-            {
-              "name": "fakeout_alcista",
-              "direction": "bullish",
-              "color": "green",
-              "level": 17.345,
-              "level_score": 72,
-              "relative_volume": 7.48,
-              "weight": 25
-            }
-          ],
-          "candles": [
-            {
-              "name": "bullish_engulfing",
-              "direction": "bullish",
-              "color": "green",
-              "in_zone": true,
-              "zone": "EMA_8"
-            }
-          ],
-          "indicators": {
-            "close": 17.37,
-            "ema_8": 17.390145823556864,
-            "ema_20": 17.42703316266614,
-            "ema_200": 17.65064164102019,
-            "vwap": 17.379477515174454,
-            "rsi": 43.58677143452092,
-            "adx": 18.213961533859816,
-            "plus_di": 25.09298444896501,
-            "minus_di": 45.60995490961832,
-            "stoch_k": 19.48033304622466,
-            "stoch_d": 14.382491440446515,
-            "atr": 0.045958171633180625,
-            "atr_pct": 0.2645836018029972,
-            "atr_pctl": 57.99999999999999,
-            "rel_vol": 7.480142598036149,
-            "bb_upper": 17.618385616999934,
-            "bb_mid": 17.46575,
-            "bb_lower": 17.313114383000066,
-            "bb_width": 1.747827800122341,
-            "bb_pct_b": 0.18634450503108863,
-            "macd": -0.01872497140537277,
-            "macd_signal": 0.0038357557401252785,
-            "macd_hist": -0.022560727145498047,
-            "kc_upper": 17.495970420115913,
-            "kc_mid": 17.42703316266614,
-            "kc_lower": 17.35809590521637,
-            "obv": -112759.0
-          }
-        }
-      },
-      "alignment": "daily_h1_bearish",
-      "regime_daily": "trending",
-      "hard_blocks": [],
-      "disclaimer": "Esta aplicacion ofrece analisis de datos, no asesoramiento financiero.",
-      "reasons": [
-        {
-          "icon": "\u2705",
-          "label": "Tendencia fuerte",
-          "detail": "EMAs alineadas y ADX alto",
-          "points": 25
-        },
-        {
-          "icon": "\u2705",
-          "label": "Vela: doji",
-          "detail": "neutral en VWAP",
-          "points": 5
-        },
-        {
-          "icon": "\u2705",
-          "label": "R\u00e9gimen en tendencia",
-          "detail": "El mercado favorece la direcci\u00f3n",
-          "points": 3
-        }
-      ],
-      "sparkline": [
-        21.17,
-        20.94,
-        20.94,
-        20.07,
-        19.8,
-        19.11,
-        18.1,
-        17.54,
-        18.41,
-        18.96,
-        19.24,
-        19.27,
-        19.26,
-        18.86,
-        18.73,
-        18.79,
-        17.88,
-        17.41,
-        17.45,
-        17.37
-      ],
-      "chart_5d": [
-        {
-          "date": "2026-11-18",
-          "o": 18.59,
-          "h": 19.04,
-          "l": 18.41,
-          "c": 18.79
-        },
-        {
-          "date": "2026-11-19",
-          "o": 18.98,
-          "h": 19.02,
-          "l": 17.86,
-          "c": 17.88
-        },
-        {
-          "date": "2026-11-20",
-          "o": 17.7,
-          "h": 17.82,
-          "l": 17.36,
-          "c": 17.41
-        },
-        {
-          "date": "2026-11-23",
-          "o": 17.66,
-          "h": 17.97,
-          "l": 17.36,
-          "c": 17.45
-        },
-        {
-          "date": "2026-11-24",
-          "o": 17.39,
-          "h": 17.57,
-          "l": 17.09,
-          "c": 17.37
-        }
-      ]
-    },
-    {
       "ticker": "WAFD",
-      "timestamp": "2026-11-24T23:34:50.853732+00:00",
+      "timestamp": "2026-11-25T01:44:47.501770+00:00",
       "score": 70,
       "color": "yellow",
       "side": "short",
@@ -11727,7 +11744,7 @@
     },
     {
       "ticker": "LINE",
-      "timestamp": "2026-11-24T23:35:10.011377+00:00",
+      "timestamp": "2026-11-25T01:45:08.348093+00:00",
       "score": 70,
       "color": "yellow",
       "side": "short",
@@ -12150,8 +12167,432 @@
       ]
     },
     {
+      "ticker": "VET",
+      "timestamp": "2026-11-25T01:45:29.807857+00:00",
+      "score": 70,
+      "color": "yellow",
+      "side": "short",
+      "side_label": "SHORT",
+      "side_color": "red",
+      "structure_bias": "bearish",
+      "confluence": "low",
+      "timeframes": {
+        "daily": {
+          "timeframe": "daily",
+          "score": 56,
+          "color": "red",
+          "structure_bias": "bearish",
+          "regime": "trending",
+          "rsi_penalty": 0,
+          "modules": {
+            "sr": {
+              "score": 57,
+              "color": "red"
+            },
+            "pattern": {
+              "score": 0,
+              "color": "red"
+            },
+            "candle": {
+              "score": 70,
+              "color": "yellow"
+            },
+            "trend": {
+              "score": 100,
+              "color": "green"
+            },
+            "momentum": {
+              "score": 50,
+              "color": "red"
+            },
+            "volume": {
+              "score": 70,
+              "color": "yellow"
+            }
+          },
+          "key_levels": {
+            "supports": [
+              {
+                "price": 9.8325,
+                "score": 57,
+                "color": "yellow"
+              },
+              {
+                "price": 9.68,
+                "score": 26,
+                "color": "red"
+              },
+              {
+                "price": 9.370000000000001,
+                "score": 32,
+                "color": "red"
+              }
+            ],
+            "resistances": [
+              {
+                "price": 10.2,
+                "score": 29,
+                "color": "red"
+              },
+              {
+                "price": 10.54,
+                "score": 30,
+                "color": "red"
+              },
+              {
+                "price": 10.915,
+                "score": 25,
+                "color": "red"
+              }
+            ]
+          },
+          "patterns": [],
+          "candles": [
+            {
+              "name": "bullish_harami",
+              "direction": "bullish",
+              "color": "green",
+              "in_zone": true,
+              "zone": "VWAP"
+            }
+          ],
+          "indicators": {
+            "close": 10.02,
+            "ema_8": 10.345817761276304,
+            "ema_20": 10.978756727448138,
+            "ema_200": 11.313925835046966,
+            "vwap": 9.975,
+            "rsi": 32.61344738415569,
+            "adx": 35.93356892063827,
+            "plus_di": 15.506204735625273,
+            "minus_di": 40.738317395601904,
+            "stoch_k": 10.992470853314847,
+            "stoch_d": 12.032839216922534,
+            "atr": 0.43715512871239665,
+            "atr_pct": 4.3628256358522615,
+            "atr_pctl": 60.0,
+            "rel_vol": 1.3972747166293056,
+            "bb_upper": 13.641834931570987,
+            "bb_mid": 11.14125,
+            "bb_lower": 8.640665068429012,
+            "bb_width": 44.88876798511814,
+            "bb_pct_b": 0.2758024560886287,
+            "macd": -0.6208799776156457,
+            "macd_signal": -0.5333770638005093,
+            "macd_hist": -0.08750291381513642,
+            "kc_upper": 11.634489420516733,
+            "kc_mid": 10.978756727448138,
+            "kc_lower": 10.323024034379543,
+            "obv": 4025214.0
+          }
+        },
+        "h1": {
+          "timeframe": "h1",
+          "score": 74,
+          "color": "yellow",
+          "structure_bias": "bearish",
+          "regime": "trending",
+          "rsi_penalty": 0,
+          "modules": {
+            "sr": {
+              "score": 70,
+              "color": "yellow"
+            },
+            "pattern": {
+              "score": 45,
+              "color": "red"
+            },
+            "candle": {
+              "score": 80,
+              "color": "green"
+            },
+            "trend": {
+              "score": 88,
+              "color": "green"
+            },
+            "momentum": {
+              "score": 73,
+              "color": "yellow"
+            },
+            "volume": {
+              "score": 90,
+              "color": "green"
+            }
+          },
+          "key_levels": {
+            "supports": [
+              {
+                "price": 9.8325,
+                "score": 64,
+                "color": "yellow"
+              }
+            ],
+            "resistances": [
+              {
+                "price": 10.085,
+                "score": 70,
+                "color": "yellow"
+              },
+              {
+                "price": 10.215,
+                "score": 39,
+                "color": "red"
+              },
+              {
+                "price": 10.285,
+                "score": 42,
+                "color": "red"
+              }
+            ]
+          },
+          "patterns": [
+            {
+              "name": "rebote_en_resistencia",
+              "direction": "bearish",
+              "color": "red",
+              "level": 10.085,
+              "level_score": 70,
+              "weight": 45
+            }
+          ],
+          "candles": [
+            {
+              "name": "shooting_star",
+              "direction": "bearish",
+              "color": "red",
+              "in_zone": true,
+              "zone": "EMA_8"
+            }
+          ],
+          "indicators": {
+            "close": 10.02,
+            "ema_8": 10.001682489299998,
+            "ema_20": 10.090286372426585,
+            "ema_200": 11.264646722750307,
+            "vwap": 9.98782003954686,
+            "rsi": 41.90106870575289,
+            "adx": 38.840559475737784,
+            "plus_di": 15.129296062867093,
+            "minus_di": 25.556364686449516,
+            "stoch_k": 41.90476190476173,
+            "stoch_d": 35.61192701379607,
+            "atr": 0.11690021947688031,
+            "atr_pct": 1.1666688570546937,
+            "atr_pctl": 24.0,
+            "rel_vol": 2.193362867457185,
+            "bb_upper": 10.428733665836154,
+            "bb_mid": 10.0885,
+            "bb_lower": 9.748266334163846,
+            "bb_width": 6.744980241585048,
+            "bb_pct_b": 0.3993338889147617,
+            "macd": -0.11999792911715801,
+            "macd_signal": -0.13776615900313322,
+            "macd_hist": 0.017768229885975206,
+            "kc_upper": 10.265636701641904,
+            "kc_mid": 10.090286372426585,
+            "kc_lower": 9.914936043211265,
+            "obv": -326358.0
+          }
+        },
+        "m5": {
+          "timeframe": "m5",
+          "score": 43,
+          "color": "red",
+          "structure_bias": "bearish",
+          "regime": "ranging",
+          "rsi_penalty": 0,
+          "modules": {
+            "sr": {
+              "score": 97,
+              "color": "green"
+            },
+            "pattern": {
+              "score": 45,
+              "color": "red"
+            },
+            "candle": {
+              "score": 0,
+              "color": "red"
+            },
+            "trend": {
+              "score": 58,
+              "color": "red"
+            },
+            "momentum": {
+              "score": 45,
+              "color": "red"
+            },
+            "volume": {
+              "score": 90,
+              "color": "green"
+            }
+          },
+          "key_levels": {
+            "supports": [
+              {
+                "price": 9.969,
+                "score": 70,
+                "color": "yellow"
+              },
+              {
+                "price": 9.836666666666666,
+                "score": 65,
+                "color": "yellow"
+              }
+            ],
+            "resistances": [
+              {
+                "price": 10.028125,
+                "score": 91,
+                "color": "green"
+              },
+              {
+                "price": 10.033333333333333,
+                "score": 97,
+                "color": "green"
+              },
+              {
+                "price": 10.085,
+                "score": 95,
+                "color": "green"
+              }
+            ]
+          },
+          "patterns": [
+            {
+              "name": "rebote_en_resistencia",
+              "direction": "bearish",
+              "color": "red",
+              "level": 10.028125,
+              "level_score": 91,
+              "weight": 45
+            }
+          ],
+          "candles": [],
+          "indicators": {
+            "close": 10.02,
+            "ema_8": 10.040844191358161,
+            "ema_20": 10.035256052555102,
+            "ema_200": 10.085575060401032,
+            "vwap": 9.991625720655358,
+            "rsi": 47.76986185036081,
+            "adx": 18.717581254604482,
+            "plus_di": 43.37194570289992,
+            "minus_di": 27.91462144290675,
+            "stoch_k": 54.901960784312706,
+            "stoch_d": 58.16993464052161,
+            "atr": 0.020029306834325456,
+            "atr_pct": 0.19989328177969518,
+            "atr_pctl": 50.0,
+            "rel_vol": 2.2749708337072603,
+            "bb_upper": 10.071340290575291,
+            "bb_mid": 10.032749999999998,
+            "bb_lower": 9.994159709424705,
+            "bb_width": 0.7692863985506038,
+            "bb_pct_b": 0.33480300601621016,
+            "macd": 0.008329271811870598,
+            "macd_signal": 0.00983260822837685,
+            "macd_hist": -0.0015033364165062523,
+            "kc_upper": 10.06530001280659,
+            "kc_mid": 10.035256052555102,
+            "kc_lower": 10.005212092303614,
+            "obv": 317127.0
+          }
+        }
+      },
+      "alignment": "aligned_bearish",
+      "regime_daily": "trending",
+      "hard_blocks": [],
+      "disclaimer": "Esta aplicacion ofrece analisis de datos, no asesoramiento financiero.",
+      "reasons": [
+        {
+          "icon": "\u2705",
+          "label": "Tendencia fuerte",
+          "detail": "EMAs alineadas y ADX alto",
+          "points": 25
+        },
+        {
+          "icon": "\u2705",
+          "label": "3 temporalidades alineadas",
+          "detail": "Diario, 1h y 5m apuntan abajo",
+          "points": 15
+        },
+        {
+          "icon": "\u2705",
+          "label": "Vela: bullish harami",
+          "detail": "bullish en VWAP",
+          "points": 5
+        },
+        {
+          "icon": "\u2705",
+          "label": "R\u00e9gimen en tendencia",
+          "detail": "El mercado favorece la direcci\u00f3n",
+          "points": 3
+        }
+      ],
+      "sparkline": [
+        13.65,
+        13.52,
+        13.68,
+        12.46,
+        12.38,
+        10.74,
+        10.49,
+        10.46,
+        10.22,
+        10.33,
+        10.64,
+        10.89,
+        11.0,
+        10.71,
+        10.83,
+        10.29,
+        10.36,
+        10.26,
+        9.91,
+        10.02
+      ],
+      "chart_5d": [
+        {
+          "date": "2026-11-18",
+          "o": 10.74,
+          "h": 10.77,
+          "l": 10.29,
+          "c": 10.29
+        },
+        {
+          "date": "2026-11-19",
+          "o": 10.37,
+          "h": 10.6,
+          "l": 10.3,
+          "c": 10.36
+        },
+        {
+          "date": "2026-11-20",
+          "o": 10.27,
+          "h": 10.46,
+          "l": 10.21,
+          "c": 10.26
+        },
+        {
+          "date": "2026-11-23",
+          "o": 10.24,
+          "h": 10.24,
+          "l": 9.85,
+          "c": 9.91
+        },
+        {
+          "date": "2026-11-24",
+          "o": 9.98,
+          "h": 10.09,
+          "l": 9.82,
+          "c": 10.02
+        }
+      ]
+    },
+    {
       "ticker": "EGY",
-      "timestamp": "2026-11-24T23:35:58.124036+00:00",
+      "timestamp": "2026-11-25T01:45:57.994032+00:00",
       "score": 70,
       "color": "yellow",
       "side": "short",
@@ -12586,440 +13027,8 @@
       ]
     },
     {
-      "ticker": "MUC",
-      "timestamp": "2026-11-24T23:36:24.762912+00:00",
-      "score": 70,
-      "color": "yellow",
-      "side": "short",
-      "side_label": "SHORT",
-      "side_color": "red",
-      "structure_bias": "bearish",
-      "confluence": "low",
-      "timeframes": {
-        "daily": {
-          "timeframe": "daily",
-          "score": 54,
-          "color": "red",
-          "structure_bias": "bearish",
-          "regime": "trending",
-          "rsi_penalty": 0,
-          "modules": {
-            "sr": {
-              "score": 67,
-              "color": "yellow"
-            },
-            "pattern": {
-              "score": 28,
-              "color": "red"
-            },
-            "candle": {
-              "score": 0,
-              "color": "red"
-            },
-            "trend": {
-              "score": 92,
-              "color": "green"
-            },
-            "momentum": {
-              "score": 60,
-              "color": "yellow"
-            },
-            "volume": {
-              "score": 45,
-              "color": "red"
-            }
-          },
-          "key_levels": {
-            "supports": [
-              {
-                "price": 9.63,
-                "score": 62,
-                "color": "yellow"
-              },
-              {
-                "price": 9.5125,
-                "score": 67,
-                "color": "yellow"
-              }
-            ],
-            "resistances": [
-              {
-                "price": 9.88,
-                "score": 39,
-                "color": "red"
-              },
-              {
-                "price": 10.01,
-                "score": 37,
-                "color": "red"
-              },
-              {
-                "price": 10.23,
-                "score": 23,
-                "color": "red"
-              }
-            ]
-          },
-          "patterns": [
-            {
-              "name": "pullback_a_ema8",
-              "direction": "bearish",
-              "color": "red",
-              "level": 9.705661384462067,
-              "weight": 28
-            }
-          ],
-          "candles": [],
-          "indicators": {
-            "close": 9.645,
-            "ema_8": 9.705661384462067,
-            "ema_20": 9.823340249514091,
-            "ema_200": 10.384863313569689,
-            "vwap": 9.653333333333332,
-            "rsi": 39.040578815564984,
-            "adx": 27.39896398677539,
-            "plus_di": 14.696081320025192,
-            "minus_di": 33.29123416884264,
-            "stoch_k": 12.159329140461173,
-            "stoch_d": 6.892522711390633,
-            "atr": 0.12371884246179422,
-            "atr_pct": 1.2827251680849583,
-            "atr_pctl": 68.0,
-            "rel_vol": 0.9780175482233068,
-            "bb_upper": 10.378531372876052,
-            "bb_mid": 9.93075,
-            "bb_lower": 9.482968627123947,
-            "bb_width": 9.018077645214163,
-            "bb_pct_b": 0.1809268793779228,
-            "macd": -0.08887696143741941,
-            "macd_signal": -0.04206773110111506,
-            "macd_hist": -0.04680923033630435,
-            "kc_upper": 10.008918513206783,
-            "kc_mid": 9.823340249514091,
-            "kc_lower": 9.637761985821399,
-            "obv": -578233.0
-          }
-        },
-        "h1": {
-          "timeframe": "h1",
-          "score": 69,
-          "color": "yellow",
-          "structure_bias": "bearish",
-          "regime": "neutral",
-          "rsi_penalty": 0,
-          "modules": {
-            "sr": {
-              "score": 95,
-              "color": "green"
-            },
-            "pattern": {
-              "score": 45,
-              "color": "red"
-            },
-            "candle": {
-              "score": 80,
-              "color": "green"
-            },
-            "trend": {
-              "score": 63,
-              "color": "yellow"
-            },
-            "momentum": {
-              "score": 58,
-              "color": "red"
-            },
-            "volume": {
-              "score": 45,
-              "color": "red"
-            }
-          },
-          "key_levels": {
-            "supports": [
-              {
-                "price": 9.636666666666665,
-                "score": 95,
-                "color": "green"
-              },
-              {
-                "price": 9.539166666666667,
-                "score": 68,
-                "color": "yellow"
-              }
-            ],
-            "resistances": [
-              {
-                "price": 9.699000000000002,
-                "score": 75,
-                "color": "green"
-              },
-              {
-                "price": 9.7325,
-                "score": 52,
-                "color": "yellow"
-              },
-              {
-                "price": 9.773125,
-                "score": 51,
-                "color": "yellow"
-              }
-            ]
-          },
-          "patterns": [
-            {
-              "name": "rebote_en_resistencia",
-              "direction": "bearish",
-              "color": "red",
-              "level": 9.699000000000002,
-              "level_score": 75,
-              "weight": 45
-            }
-          ],
-          "candles": [
-            {
-              "name": "shooting_star",
-              "direction": "bearish",
-              "color": "red",
-              "in_zone": true,
-              "zone": "EMA_8"
-            }
-          ],
-          "indicators": {
-            "close": 9.645,
-            "ema_8": 9.648739211972318,
-            "ema_20": 9.64439891110821,
-            "ema_200": 9.839037238902211,
-            "vwap": 9.652935784529575,
-            "rsi": 48.546510986241074,
-            "adx": 21.046223686704366,
-            "plus_di": 30.32465400590045,
-            "minus_di": 32.21893357961245,
-            "stoch_k": 61.764705882352835,
-            "stoch_d": 73.20356992699618,
-            "atr": 0.036356383938285504,
-            "atr_pct": 0.3769454011227113,
-            "atr_pctl": 68.0,
-            "rel_vol": 1.040919392544212,
-            "bb_upper": 9.727856537528423,
-            "bb_mid": 9.622499999999999,
-            "bb_lower": 9.517143462471575,
-            "bb_width": 2.189795531897615,
-            "bb_pct_b": 0.606780274522265,
-            "macd": -0.0069292233735964714,
-            "macd_signal": -0.01659794592745235,
-            "macd_hist": 0.009668722553855879,
-            "kc_upper": 9.698933487015639,
-            "kc_mid": 9.64439891110821,
-            "kc_lower": 9.589864335200781,
-            "obv": 184616.0
-          }
-        },
-        "m5": {
-          "timeframe": "m5",
-          "score": 53,
-          "color": "red",
-          "structure_bias": "bearish",
-          "regime": "ranging",
-          "rsi_penalty": 0,
-          "modules": {
-            "sr": {
-              "score": 100,
-              "color": "green"
-            },
-            "pattern": {
-              "score": 45,
-              "color": "red"
-            },
-            "candle": {
-              "score": 60,
-              "color": "yellow"
-            },
-            "trend": {
-              "score": 58,
-              "color": "red"
-            },
-            "momentum": {
-              "score": 58,
-              "color": "red"
-            },
-            "volume": {
-              "score": 65,
-              "color": "yellow"
-            }
-          },
-          "key_levels": {
-            "supports": [
-              {
-                "price": 9.58,
-                "score": 66,
-                "color": "yellow"
-              },
-              {
-                "price": 9.528333333333334,
-                "score": 65,
-                "color": "yellow"
-              }
-            ],
-            "resistances": [
-              {
-                "price": 9.648571428571431,
-                "score": 94,
-                "color": "green"
-              },
-              {
-                "price": 9.676538461538463,
-                "score": 100,
-                "color": "green"
-              },
-              {
-                "price": 9.725,
-                "score": 33,
-                "color": "red"
-              }
-            ]
-          },
-          "patterns": [
-            {
-              "name": "rebote_en_resistencia",
-              "direction": "bearish",
-              "color": "red",
-              "level": 9.648571428571431,
-              "level_score": 94,
-              "weight": 45
-            }
-          ],
-          "candles": [
-            {
-              "name": "doji",
-              "direction": "neutral",
-              "color": "yellow",
-              "in_zone": true,
-              "zone": "EMA_8"
-            }
-          ],
-          "indicators": {
-            "close": 9.645,
-            "ema_8": 9.655846162210967,
-            "ema_20": 9.65378054807137,
-            "ema_200": 9.673973091050577,
-            "vwap": 9.657836122119479,
-            "rsi": 45.80136625291633,
-            "adx": 12.659396059935036,
-            "plus_di": 43.911822075710475,
-            "minus_di": 47.81621815544066,
-            "stoch_k": 66.66666666666401,
-            "stoch_d": 81.17283950617114,
-            "atr": 0.008521398428575456,
-            "atr_pct": 0.08835042435018617,
-            "atr_pctl": 23.0,
-            "rel_vol": 1.7511036367458483,
-            "bb_upper": 9.682209740759363,
-            "bb_mid": 9.654,
-            "bb_lower": 9.625790259240636,
-            "bb_width": 0.584415594766181,
-            "bb_pct_b": 0.3404806326160051,
-            "macd": 0.0013947572674517517,
-            "macd_signal": 0.0004041243999286445,
-            "macd_hist": 0.0009906328675231071,
-            "kc_upper": 9.666562645714233,
-            "kc_mid": 9.65378054807137,
-            "kc_lower": 9.640998450428508,
-            "obv": -31381.0
-          }
-        }
-      },
-      "alignment": "aligned_bearish",
-      "regime_daily": "trending",
-      "hard_blocks": [],
-      "disclaimer": "Esta aplicacion ofrece analisis de datos, no asesoramiento financiero.",
-      "reasons": [
-        {
-          "icon": "\u2705",
-          "label": "Tendencia fuerte",
-          "detail": "EMAs alineadas y ADX alto",
-          "points": 25
-        },
-        {
-          "icon": "\u2705",
-          "label": "3 temporalidades alineadas",
-          "detail": "Diario, 1h y 5m apuntan abajo",
-          "points": 15
-        },
-        {
-          "icon": "\u2705",
-          "label": "Niveles S/R correctos",
-          "detail": "Zona operativa razonable",
-          "points": 6
-        },
-        {
-          "icon": "\u2705",
-          "label": "R\u00e9gimen en tendencia",
-          "detail": "El mercado favorece la direcci\u00f3n",
-          "points": 3
-        }
-      ],
-      "sparkline": [
-        9.96,
-        10.07,
-        10.12,
-        10.12,
-        10.13,
-        10.19,
-        10.06,
-        10.21,
-        10.23,
-        10.02,
-        10.01,
-        9.93,
-        9.9,
-        9.83,
-        9.77,
-        9.69,
-        9.57,
-        9.52,
-        9.65,
-        9.64
-      ],
-      "chart_5d": [
-        {
-          "date": "2026-11-18",
-          "o": 9.71,
-          "h": 9.73,
-          "l": 9.68,
-          "c": 9.69
-        },
-        {
-          "date": "2026-11-19",
-          "o": 9.68,
-          "h": 9.68,
-          "l": 9.55,
-          "c": 9.57
-        },
-        {
-          "date": "2026-11-20",
-          "o": 9.58,
-          "h": 9.67,
-          "l": 9.51,
-          "c": 9.52
-        },
-        {
-          "date": "2026-11-23",
-          "o": 9.67,
-          "h": 9.7,
-          "l": 9.62,
-          "c": 9.65
-        },
-        {
-          "date": "2026-11-24",
-          "o": 9.69,
-          "h": 9.7,
-          "l": 9.62,
-          "c": 9.64
-        }
-      ]
-    },
-    {
       "ticker": "CRC",
-      "timestamp": "2026-11-24T23:37:06.422165+00:00",
+      "timestamp": "2026-11-25T01:47:13.064623+00:00",
       "score": 70,
       "color": "yellow",
       "side": "short",
@@ -13760,7 +13769,7 @@
           "score": 79
         },
         {
-          "ticker": "AVPT",
+          "ticker": "CXM",
           "score": 77
         }
       ],
@@ -13798,11 +13807,11 @@
           "score": 78
         },
         {
-          "ticker": "ATO",
+          "ticker": "AQN",
           "score": 71
         },
         {
-          "ticker": "AQN",
+          "ticker": "ATO",
           "score": 71
         }
       ],
@@ -13812,39 +13821,25 @@
           "score": 75
         },
         {
-          "ticker": "FLS",
-          "score": 70
+          "ticker": "RXO",
+          "score": 71
         },
         {
-          "ticker": "ADT",
+          "ticker": "OTIS",
           "score": 70
         }
       ],
       "Financiero": [
         {
-          "ticker": "BAM",
-          "score": 72
-        },
-        {
           "ticker": "V",
           "score": 72
         },
         {
+          "ticker": "BAM",
+          "score": 72
+        },
+        {
           "ticker": "PB",
-          "score": 70
-        }
-      ],
-      "Consumo B\u00e1sico": [
-        {
-          "ticker": "OLLI",
-          "score": 70
-        },
-        {
-          "ticker": "MDLZ",
-          "score": 70
-        },
-        {
-          "ticker": "HRL",
           "score": 70
         }
       ],
@@ -13864,7 +13859,7 @@
       ],
       "Comunicaciones": [
         {
-          "ticker": "LYV",
+          "ticker": "NYT",
           "score": 70
         },
         {
@@ -13872,7 +13867,21 @@
           "score": 70
         },
         {
-          "ticker": "NYT",
+          "ticker": "LYV",
+          "score": 70
+        }
+      ],
+      "Consumo B\u00e1sico": [
+        {
+          "ticker": "DEO",
+          "score": 70
+        },
+        {
+          "ticker": "HRL",
+          "score": 70
+        },
+        {
+          "ticker": "MDLZ",
           "score": 70
         }
       ],
@@ -13902,7 +13911,7 @@
           "score": 73
         },
         {
-          "ticker": "NAC",
+          "ticker": "WAFD",
           "score": 70
         }
       ],
@@ -13912,7 +13921,7 @@
           "score": 74
         },
         {
-          "ticker": "BKV",
+          "ticker": "EGY",
           "score": 70
         },
         {
@@ -13962,6 +13971,20 @@
           "score": 67
         }
       ],
+      "Bienes Ra\u00edces": [
+        {
+          "ticker": "AIV",
+          "score": 71
+        },
+        {
+          "ticker": "LINE",
+          "score": 70
+        },
+        {
+          "ticker": "IIPR",
+          "score": 62
+        }
+      ],
       "Tecnolog\u00eda": [
         {
           "ticker": "CSIQ",
@@ -13972,22 +13995,8 @@
           "score": 68
         },
         {
-          "ticker": "NXT",
+          "ticker": "STNE",
           "score": 68
-        }
-      ],
-      "Bienes Ra\u00edces": [
-        {
-          "ticker": "LINE",
-          "score": 70
-        },
-        {
-          "ticker": "IIPR",
-          "score": 62
-        },
-        {
-          "ticker": "LAND",
-          "score": 60
         }
       ],
       "Industrial": [
@@ -14006,16 +14015,30 @@
       ],
       "Materiales": [
         {
-          "ticker": "METC",
+          "ticker": "AU",
           "score": 69
         },
         {
-          "ticker": "AU",
+          "ticker": "METC",
           "score": 69
         },
         {
           "ticker": "AEM",
           "score": 68
+        }
+      ],
+      "Utilities": [
+        {
+          "ticker": "HE",
+          "score": 67
+        },
+        {
+          "ticker": "IMSR",
+          "score": 67
+        },
+        {
+          "ticker": "ELPC",
+          "score": 66
         }
       ],
       "Comunicaciones": [
@@ -14030,20 +14053,6 @@
         {
           "ticker": "TDS",
           "score": 64
-        }
-      ],
-      "Utilities": [
-        {
-          "ticker": "IMSR",
-          "score": 67
-        },
-        {
-          "ticker": "HE",
-          "score": 67
-        },
-        {
-          "ticker": "ELPC",
-          "score": 66
         }
       ],
       "Otros": [
